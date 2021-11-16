@@ -1,18 +1,19 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
+// here we return function with object of configurations for production or development
 module.exports = (env = {}) => {
   const { mode = "development" } = env;
   const isProd = mode === "production";
   const isDev = mode === "development";
-
+  console.log(mode);
+  //MiniCssExtractPlugin.loader  better to use for production  and style-loader for development
   const getStyleLoaders = () => {
     return [
       isProd ? MiniCssExtractPlugin.loader : "style-loader",
       "css-loader",
     ];
   };
-
+  // this plugin generate an HTML5 file that includes all webpack bundles in the body using script tags  for development only.
   const getPlugins = () => {
     const plugins = [
       new HtmlWebpackPlugin({
@@ -21,6 +22,7 @@ module.exports = (env = {}) => {
         template: "public/index.html",
       }),
     ];
+    // this plugin extracts CSS into separate files. It creates a CSS file per JS which contains CSS. It combines with css-loader.
     if (isProd) {
       plugins.push(
         new MiniCssExtractPlugin({
@@ -43,6 +45,7 @@ module.exports = (env = {}) => {
           exclude: /node_modules/,
           loader: "babel-loader",
         },
+        //Loading images and icons
         {
           test: /\.(png|jpg|jpeg|svg|ico|gif)$/,
           use: [
@@ -55,6 +58,7 @@ module.exports = (env = {}) => {
             },
           ],
         },
+        // loading fonts
         {
           test: /\.(ttf|otf|eot|woff|woff2)$/,
           use: [
@@ -67,10 +71,12 @@ module.exports = (env = {}) => {
             },
           ],
         },
+        //loading CSS
         {
           test: /\.(css)$/,
           use: getStyleLoaders(),
         },
+        //Loading SASS/SCSS
         {
           test: /\.(s[ca]ss)$/,
           use: [...getStyleLoaders(), "sass-loader"],
@@ -78,6 +84,7 @@ module.exports = (env = {}) => {
       ],
     },
     plugins: getPlugins(),
+    // server that provides live reloading used for development
     devServer: {
       open: true,
     },
