@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/ira-alchynska/internship-react-task#readme",
   "dependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.16.0",
     "core-js": "^3.19.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",

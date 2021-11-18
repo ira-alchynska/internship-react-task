@@ -22,7 +22,7 @@
 .header-column {
   width: 100%;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   text-align: center;
   border-left: 3px solid lightgray;
   height: 20px;
