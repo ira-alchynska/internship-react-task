@@ -1,42 +1,34 @@
 import React, { useState } from "react";
+import Button from "../Button/Button.jsx";
+import More from "../../images/more.png";
+import "./styles.css";
 
-const DropDown = () => {
-  const [dropdown, setDropDown] = useState(false);
+const DropDown = ({ onClick, accessor, dropdownItems }) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <ul
-      className={dropdown ? "select-dropdown clicked" : "select-dropdown"}
-      onClick={() => setDropDown(!dropdown)}
-    >
-      <li
-        className="dropdown-item asc"
-        value="asc"
-        onClick={() => setDropDown(false)}
-      >
-        ASC
-      </li>
-      <li
-        className="dropdown-item desc"
-        value="desc"
-        onClick={() => setDropDown(false)}
-      >
-        DESC
-      </li>
-      <li
-        className="dropdown-item hide"
-        selected
-        value="hide"
-        onClick={() => setDropDown(false)}
-      >
-        HIDE
-      </li>
-      <li
-        className="dropdown-item show"
-        value="show"
-        onClick={() => setDropDown(false)}
-      >
-        SHOW ALL
-      </li>
-    </ul>
+    <>
+      <Button
+        type="button"
+        icon={More}
+        onClick={() => setIsOpen((prevState) => !prevState)}
+      />
+      {isOpen && (
+        <ul className="dropdown">
+          {dropdownItems.map((item) => {
+            return (
+              <li
+                key={item}
+                className="dropdown-item "
+                value={item}
+                onClick={() => onClick(item, accessor)}
+              >
+                {item}
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </>
   );
 };
 

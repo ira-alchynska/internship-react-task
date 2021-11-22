@@ -1,29 +1,80 @@
 import React from "react";
-import bubbleSort from "../../utils/sortUtils.js";
+import countries from "../../data/countries.js";
+import columns from "../../data/columns.js";
+import DropDown from "../dropdown-list/DropDown.jsx";
 import Button from "../Button/Button.jsx";
-import More from "../../images/more.png";
 import Arrow from "../../images/up-arrow.png";
 
-const TableHeader = ({ setData, setHeaderData, headerData, data }) => {
-  // console.log(setData);
-  // console.log(setHeaderData);
-  // console.log(headerData);
-  // console.log(data);
-  // const handleSort = (accessor, order, sortingType) => {
-  //   setData(bubbleSort(data, accessor, sortingType, order));
-  // };
+const NAME_DROPDOWN_ITEMS = ["ASC", "DESC", "SHOW ALL"];
+const DROPDOWN_ITEMS = [...NAME_DROPDOWN_ITEMS, "HIDE"];
+
+const TableHeader = ({
+  headerData,
+  setHeaderData,
+  changeOrder,
+  data,
+  setData,
+}) => {
+  const hideColumn = (columnName) => {
+    const filteredHeaderData = headerData.filter(
+      ({ accessor }) => accessor !== columnName
+    );
+    const filteredData = JSON.parse(JSON.stringify(data)).reduce(
+      (acc, item) => {
+        delete item[columnName];
+        acc.push(item);
+        return acc;
+      },
+      []
+    );
+    setHeaderData(filteredHeaderData);
+    setData(filteredData);
+  };
+
+  const showAllColumns = () => {
+    setHeaderData(columns);
+
+    setData(countries);
+  };
+
+  const onClickDropDown = (type, columnName) => {
+    console.log(columnName);
+    switch (type) {
+      case "HIDE":
+        hideColumn(columnName);
+        break;
+      case "SHOW ALL":
+        showAllColumns();
+        break;
+      case "asc":
+        changeOrder({ order: type, accessor: columnName });
+        console.log({ order: type, accessor: columnName });
+        break;
+      case "desc":
+        changeOrder({ order: type, accessor: columnName });
+        break;
+      default:
+        console.log("any");
+    }
+  };
 
   return (
     <div className="header-row">
-      {headerData.map(({ label }) => (
+      {headerData.map(({ label, order, accessor }) => (
         <div className="header-column" key={label}>
           {label}
           <Button
             type="button"
             icon={Arrow}
-            //onClick={() => handleSort(accessor, order, sortingType)}
+            onClick={() => changeOrder({ order, accessor })}
           />
-          <Button type="button" icon={More} />
+          <DropDown
+            dropdownItems={
+              accessor === "name" ? NAME_DROPDOWN_ITEMS : DROPDOWN_ITEMS
+            }
+            onClick={onClickDropDown}
+            accessor={accessor}
+          />
         </div>
       ))}
     </div>
