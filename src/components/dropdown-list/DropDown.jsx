@@ -18,7 +18,7 @@ const DropDown = ({ onClick, accessor, dropdownItems }) => {
             return (
               <li
                 key={item}
-                className="dropdown-item "
+                className="dropdown-item asc"
                 value={item}
                 onClick={() => onClick(item, accessor)}
               >
@@ -33,3 +33,18 @@ const DropDown = ({ onClick, accessor, dropdownItems }) => {
 };
 
 export default DropDown;
+
+{
+  /* <li className="dropdown-item asc" value="asc" onClick={() => setDropDown(false)}>
+ASC
+</li>
+<li className="dropdown-item desc" value="desc" onClick={() => setDropDown(false)}>
+DESC
+</li>
+<li className="dropdown-item hide" selected value="hide" onClick={() => setDropDown(false)}>
+HIDE
+</li>
+<li className="dropdown-item show" value="show" onClick={() => setDropDown(false)}>
+SHOW ALL
+</li> */
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 
-const Filter = ({ filterValue, onChange }) => {
+const Filter = ({ onChange }) => {
   return (
     <div>
       <label htmlFor="filter">
@@ -11,7 +11,6 @@ const Filter = ({ filterValue, onChange }) => {
           className="input"
           placeholder="Search country"
           name="filter"
-          value={filterValue}
           onChange={onChange}
         />
       </label>
