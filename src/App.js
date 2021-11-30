@@ -1,21 +1,13 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setCountries } from "./redux/actions.js";
-import countries from "./data/countries.js";
+import { setCountries, fetchCountries } from "./redux/actions.js";
 import Table from "./components/Table/Table.jsx";
 import "./App.css";
 
 const App = () => {
-  const dispatch = useDispatch();
-  const fullState = useSelector((state) => state);
-
-  useEffect(() => {
-    dispatch(setCountries(countries));
-  }, []);
-
-  useEffect(() => {
-    console.log(fullState);
-  }, [fullState]);
+  // useEffect(() => {
+  //   dispatch(setCountries(countries));
+  // }, []);
 
   return (
     <>

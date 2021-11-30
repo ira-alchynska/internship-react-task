@@ -89,5 +89,8 @@ module.exports = (env = {}) => {
     devServer: {
       open: true,
     },
+    resolve: {
+      extensions: [".js", ".jsx"],
+    },
   };
 };

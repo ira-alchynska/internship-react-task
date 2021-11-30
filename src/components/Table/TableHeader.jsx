@@ -1,7 +1,8 @@
 import React from "react";
-import DropDown from "../dropdown-list/DropDown.jsx";
+import cx from "classnames";
+import DropDown from "../Dropdown-list/DropDown.jsx";
 import Button from "../Button/Button.jsx";
-import Arrow from "../../images/up-arrow.png";
+import Images from "../../images";
 
 const NAME_DROPDOWN_ITEMS = ["ASC", "DESC", "SHOW ALL"];
 const DROPDOWN_ITEMS = [...NAME_DROPDOWN_ITEMS, "HIDE"];
@@ -13,7 +14,7 @@ const TableHeader = ({
   sortColumnOrder,
   setSortColumnOrder,
   sortedOrder = "asc",
-  sortedAccessor = null,
+  sortedAccessor,
 }) => {
   return (
     <div className="header-row">
@@ -24,8 +25,12 @@ const TableHeader = ({
           <div className="header-column" key={label}>
             {label}
             <Button
+              className={cx({
+                "arrow-active":
+                  sortedAccessor === accessor && sortedOrder === "asc",
+              })}
               type="button"
-              icon={Arrow}
+              icon={Images.upArrow}
               onClick={() => onSortChange({ order: newOrder, accessor })}
             />
             <DropDown

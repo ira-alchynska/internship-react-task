@@ -1,11 +1,21 @@
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import countryReducer from "./reducer";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
 
 const rootReducer = combineReducers({
   country: countryReducer,
 });
 
-const store = createStore(rootReducer);
-console.log(store);
+const logger = (store) => (next) => (action) => {
+  console.log("dispatching", action);
+  let result = next(action);
+  console.log("next state", store.getState());
+  return result;
+};
 
-export default store;
+export const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk, logger))
+);
+console.log(store);

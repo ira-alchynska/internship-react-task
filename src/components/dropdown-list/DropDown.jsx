@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../Button/Button.jsx";
-import More from "../../images/more.png";
+import Images from "../../images";
 import "./styles.css";
 
 const DropDown = ({ onClick, accessor, dropdownItems }) => {
@@ -9,7 +9,7 @@ const DropDown = ({ onClick, accessor, dropdownItems }) => {
     <>
       <Button
         type="button"
-        icon={More}
+        icon={Images.more}
         onClick={() => setIsOpen((prevState) => !prevState)}
       />
       {isOpen && (
@@ -20,7 +20,10 @@ const DropDown = ({ onClick, accessor, dropdownItems }) => {
                 key={item}
                 className="dropdown-item asc"
                 value={item}
-                onClick={() => onClick(item, accessor)}
+                onClick={() => {
+                  onClick(item, accessor);
+                  setIsOpen(false);
+                }}
               >
                 {item}
               </li>

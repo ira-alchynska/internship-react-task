@@ -31,3 +31,7 @@
   height: 15px;
   text-align: center;
 }
+
+.arrow-active {
+  transform: rotate(180deg);
+}

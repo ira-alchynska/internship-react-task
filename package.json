@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
+    "server": "json-server --delay 200 --watch db.json --port 3040",
     "build": "webpack --env mode=production",
     "dev": "webpack --env mode=development",
     "predeploy": "npm run build",
@@ -23,15 +24,21 @@
   "homepage": "https://github.com/ira-alchynska/internship-react-task#readme",
   "dependencies": {
     "@babel/plugin-proposal-object-rest-spread": "^7.16.0",
+    "axios": "^0.24.0",
+    "classnames": "^2.3.1",
     "core-js": "^3.19.1",
+    "json-server": "^0.17.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-css-modules": "^4.7.11",
     "react-dom": "^17.0.2",
     "react-jss": "^10.8.2",
     "react-redux": "^7.2.6",
+    "react-router-dom": "^6.0.2",
     "react-table": "^7.7.0",
     "redux": "^4.1.2",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
