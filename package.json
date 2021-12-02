@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
-    "server": "json-server --delay 200 --watch db.json --port 3040",
+    "server": "json-server --delay 300 --watch db.json --port 4040",
     "build": "webpack --env mode=production",
     "dev": "webpack --env mode=development",
     "predeploy": "npm run build",

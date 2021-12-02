@@ -1,22 +1,29 @@
 import React, { useState, useEffect } from "react";
+
+import CountriesSelectors from "../../redux/selectors.js";
 import { useSelector, useDispatch } from "react-redux";
 import Filter from "../Filter/Filter.jsx";
 import TableHeader from "./TableHeader.jsx";
 import TableBody from "./TableBody.jsx";
-import { fetchCountries } from "../../redux/actions.js";
-import countries from "../../data/countries";
-import columns from "../../data/columns";
+import {
+  fetchCountries,
+  setFilterValue,
+  setHiddenColumns,
+} from "../../redux/actions.js";
 import "./styles.css";
 
 const Table = () => {
   const dispatch = useDispatch();
-  const countriesData = useSelector((state) => state.country.countries);
 
-  const [headerData, setHeaderData] = useState(
-    JSON.parse(localStorage.getItem("headerData")) ?? columns
+  const loading = useSelector(CountriesSelectors.selectIsLoading); // library 'reselect'
+  const error = useSelector(CountriesSelectors.selectError);
+  const headerData = useSelector(CountriesSelectors.selectHeaderData);
+  const filterValue = useSelector(CountriesSelectors.selectFilterValue);
+  const filteredCountries = useSelector(
+    CountriesSelectors.selectFilteredCountries
   );
-  const [inputValue, setInputValue] = useState("");
-  const [hiddenColumns, setHiddenColumns] = useState([]);
+  const hiddenColumns = useSelector(CountriesSelectors.selectHiddenColumns);
+
   const [sortColumnOrder, setSortColumnOrder] = useState({
     order: "asc",
     accessor: null,
@@ -24,18 +31,40 @@ const Table = () => {
 
   useEffect(() => {
     dispatch(fetchCountries());
-  }, [dispatch]);
+    restoreData();
+  }, []);
 
-  const filteredCountries = countriesData.filter((country) => {
-    return country.name.toLowerCase().includes(inputValue.toLowerCase());
-  });
+  useEffect(() => {
+    localStorage.setItem("hiddenColumns", JSON.stringify(hiddenColumns));
+    localStorage.setItem("filterValue", JSON.stringify(filterValue));
+    localStorage.setItem("sortColumnOrder", JSON.stringify(sortColumnOrder));
+  }, [hiddenColumns, filterValue, sortColumnOrder]);
+
+  const restoreData = () => {
+    const STORE_DATA = [
+      {
+        value: localStorage.getItem("hiddenColumns"),
+        func: (value) => dispatch(setHiddenColumns(value)),
+      },
+      {
+        value: localStorage.getItem("filterValue"),
+        func: (value) => dispatch(setFilterValue(value)),
+      },
+      {
+        value: localStorage.getItem("sortColumnOrder"),
+        func: setSortColumnOrder,
+      },
+    ];
+
+    STORE_DATA.forEach(({ value, func }) => value && func(JSON.parse(value)));
+  };
 
   const onFilterChange = (e) => {
-    setInputValue(e.target.value);
+    dispatch(setFilterValue(e.target.value));
   };
 
   const hideColumn = (columnName) => {
-    setHiddenColumns([...hiddenColumns, columnName]);
+    dispatch(setHiddenColumns([...hiddenColumns, columnName]));
   };
 
   const headerWithoutFilteredColumns = headerData.filter((column) => {
@@ -43,13 +72,6 @@ const Table = () => {
     const isHiddenColumn = hiddenColumns.includes(columnAccessor);
     return !isHiddenColumn;
   });
-
-  useEffect(() => {
-    localStorage.setItem(
-      "headerData",
-      JSON.stringify(headerWithoutFilteredColumns)
-    );
-  }, [headerWithoutFilteredColumns]);
 
   const onSortChange = ({ order, accessor }) => {
     setSortColumnOrder({ order, accessor });
@@ -119,12 +141,16 @@ const Table = () => {
         setSortColumnOrder={setSortColumnOrder}
       />
       <div className="table-filter-row">
-        <Filter inputValue={inputValue} onChange={onFilterChange} />
+        <Filter inputValue={filterValue} onChange={onFilterChange} />
       </div>
-      <TableBody
-        countriesData={sortedCountries}
-        columns={headerWithoutFilteredColumns}
-      />
+      {loading && <div>Loading...</div>}
+      {error && <div>Error occurred</div>}
+      {!loading && !error && (
+        <TableBody
+          countriesData={sortedCountries}
+          columns={headerWithoutFilteredColumns}
+        />
+      )}
     </div>
   );
 };

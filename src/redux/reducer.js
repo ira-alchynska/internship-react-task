@@ -1,18 +1,26 @@
+import columns from "../data/columns";
+
 import {
-  SET_COUNTRIES,
   FETCH_COUNTRIES_REQUEST,
   FETCH_COUNTRIES_SUCCESS,
   FETCH_COUNTRIES_ERROR,
+  SET_HIDE_COLUMNS,
+  SET_HEADER_DATA,
+  SET_FILTER_VALUE,
 } from "./types.js";
 
 const initialState = {
+  headerData: columns,
+  filterValue: "",
+  hiddenColumns: [],
   countries: [],
   loading: false,
   fetched: false,
   error: null,
 };
 
-const countryReducer = (state = initialState, action) => {
+export const countryReducer = (state = initialState, action) => {
+  console.log(state, action);
   switch (action.type) {
     case FETCH_COUNTRIES_REQUEST:
       return {
@@ -35,15 +43,25 @@ const countryReducer = (state = initialState, action) => {
         fetched: false,
         error: action.payload,
       };
-    case SET_COUNTRIES:
+    case SET_HEADER_DATA:
       return {
         ...state,
-        countries: action.payload,
+        headerData: action.payload,
+      };
+
+    case SET_FILTER_VALUE:
+      return {
+        ...state,
+        filterValue: action.payload,
+      };
+
+    case SET_HIDE_COLUMNS:
+      return {
+        ...state,
+        hiddenColumns: action.payload,
       };
 
     default:
       return state;
   }
 };
-
-export default countryReducer;

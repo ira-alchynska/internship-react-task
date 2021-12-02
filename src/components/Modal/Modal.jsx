@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
+import EditCountryForm from "../ModalForm/Form";
 import "./styles.css";
 
 const modalRoot = document.querySelector("#modal-root");
@@ -27,7 +28,9 @@ export default function Modal({ onClose }) {
 
   return createPortal(
     <div className="Modal__backdrop" onClick={handleBackdropClick}>
-      <div className="Modal__content"></div>
+      <div className="Modal__content">
+        <EditCountryForm />
+      </div>
     </div>,
     modalRoot
   );
