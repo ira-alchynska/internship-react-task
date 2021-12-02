@@ -5,6 +5,7 @@ import {
   FETCH_COUNTRIES_SUCCESS,
   FETCH_COUNTRIES_ERROR,
   SET_HIDE_COLUMNS,
+  SET_SORT_COUNTRIES,
   SET_HEADER_DATA,
   SET_FILTER_VALUE,
 } from "./types.js";
@@ -17,6 +18,10 @@ const initialState = {
   loading: false,
   fetched: false,
   error: null,
+  sortColumnOrder: {
+    order: "asc",
+    accessor: null,
+  },
 };
 
 export const countryReducer = (state = initialState, action) => {
@@ -59,6 +64,12 @@ export const countryReducer = (state = initialState, action) => {
       return {
         ...state,
         hiddenColumns: action.payload,
+      };
+
+    case SET_SORT_COUNTRIES:
+      return {
+        ...state,
+        sortColumnOrder: action.payload,
       };
 
     default:

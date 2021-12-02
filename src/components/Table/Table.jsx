@@ -9,6 +9,7 @@ import {
   fetchCountries,
   setFilterValue,
   setHiddenColumns,
+  setSortedCountries,
 } from "../../redux/actions.js";
 import "./styles.css";
 
@@ -23,11 +24,12 @@ const Table = () => {
     CountriesSelectors.selectFilteredCountries
   );
   const hiddenColumns = useSelector(CountriesSelectors.selectHiddenColumns);
+  const sortColumnOrder = useSelector(CountriesSelectors.selectSortedColumns);
 
-  const [sortColumnOrder, setSortColumnOrder] = useState({
-    order: "asc",
-    accessor: null,
-  });
+  // const [sortColumnOrder, setSortColumnOrder] = useState({
+  //   order: "asc",
+  //   accessor: null,
+  // });
 
   useEffect(() => {
     dispatch(fetchCountries());
@@ -52,7 +54,7 @@ const Table = () => {
       },
       {
         value: localStorage.getItem("sortColumnOrder"),
-        func: setSortColumnOrder,
+        func: (value) => dispatch(setSortedCountries(value)),
       },
     ];
 
@@ -74,7 +76,7 @@ const Table = () => {
   });
 
   const onSortChange = ({ order, accessor }) => {
-    setSortColumnOrder({ order, accessor });
+    dispatch(setSortedCountries({ order, accessor }));
   };
 
   let sortedCountries = [...filteredCountries];
@@ -138,7 +140,7 @@ const Table = () => {
         sortedAccessor={sortColumnOrder.accessor}
         onClickDropDown={onClickDropDown}
         sortColumnOrder={sortColumnOrder}
-        setSortColumnOrder={setSortColumnOrder}
+        setSortedCountries={setSortedCountries}
       />
       <div className="table-filter-row">
         <Filter inputValue={filterValue} onChange={onFilterChange} />

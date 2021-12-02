@@ -12,7 +12,7 @@ const TableHeader = ({
   onSortChange,
   onClickDropDown,
   sortColumnOrder,
-  setSortColumnOrder,
+  setSortedCountries,
   sortedOrder = "asc",
   sortedAccessor,
 }) => {

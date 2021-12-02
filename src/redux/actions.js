@@ -4,6 +4,7 @@ import {
   FETCH_COUNTRIES_REQUEST,
   FETCH_COUNTRIES_ERROR,
   SET_HEADER_DATA,
+  SET_SORT_COUNTRIES,
   SET_FILTER_VALUE,
   SET_HIDE_COLUMNS,
 } from "./types.js";
@@ -46,6 +47,17 @@ export const setHiddenColumns = (payload) => {
   return {
     type: SET_HIDE_COLUMNS,
     payload,
+  };
+};
+
+export const setSortedCountries = (payload) => {
+  return {
+    type: SET_SORT_COUNTRIES,
+    payload,
+    // : {
+    //   order: "asc",
+    //   accessor: null,
+    // },
   };
 };
 
