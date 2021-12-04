@@ -8,7 +8,6 @@ import {
   SET_SORT_COUNTRIES,
   SET_HEADER_DATA,
   SET_FILTER_VALUE,
-  SET_SHOW_COLUMNS,
 } from "./types.js";
 
 const initialState = {
@@ -23,10 +22,10 @@ const initialState = {
     order: "asc",
     accessor: null,
   },
-  showAllColumns: columns,
 };
 
 export const countryReducer = (state = initialState, action) => {
+  console.log(state, action);
   switch (action.type) {
     case FETCH_COUNTRIES_REQUEST:
       return {
@@ -72,12 +71,6 @@ export const countryReducer = (state = initialState, action) => {
         ...state,
         sortColumnOrder: action.payload,
       };
-
-    // case SET_SHOW_COLUMNS:
-    //   return {
-    //     ...state,
-    //     showAllColumns: action.payload,
-    //   };
 
     default:
       return state;
