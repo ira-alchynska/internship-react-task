@@ -7,6 +7,7 @@ import {
   SET_SORT_COUNTRIES,
   SET_FILTER_VALUE,
   SET_HIDE_COLUMNS,
+  SET_SHOW_COLUMNS,
 } from "./types.js";
 
 export const setCountriesSuccess = (countries) => {
@@ -54,17 +55,13 @@ export const setSortedCountries = (payload) => {
   return {
     type: SET_SORT_COUNTRIES,
     payload,
-    // : {
-    //   order: "asc",
-    //   accessor: null,
-    // },
   };
 };
 
 export const fetchCountries = () => async (dispatch) => {
   dispatch(setCountriesRequest());
   try {
-    const { data } = await axios.get(`http://localhost:4040/countries/`);
+    const { data } = await axios.get(`http://localhost:4080/countries/`);
     dispatch(setCountriesSuccess(data));
   } catch (error) {
     dispatch(setCountriesError(error.message));

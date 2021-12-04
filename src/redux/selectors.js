@@ -23,6 +23,7 @@ const CountriesSelectors = {
   selectFilteredCountries,
   selectHiddenColumns,
   selectSortedColumns,
+  // selectShownColumns,
 };
 
 export default CountriesSelectors;
