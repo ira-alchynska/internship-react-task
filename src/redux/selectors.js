@@ -13,6 +13,7 @@ const selectFilteredCountries = (state) => {
 };
 const selectHiddenColumns = (state) => state.country.hiddenColumns;
 const selectSortedColumns = (state) => state.country.sortColumnOrder;
+//const selectShownColumns = (state) => state.country.showColumns;
 
 const CountriesSelectors = {
   selectCountriesData,
@@ -23,6 +24,7 @@ const CountriesSelectors = {
   selectFilteredCountries,
   selectHiddenColumns,
   selectSortedColumns,
+  // selectShownColumns,
 };
 
 export default CountriesSelectors;

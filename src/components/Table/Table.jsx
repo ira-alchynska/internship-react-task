@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import CountriesSelectors from "../../redux/selectors.js";
 import { useSelector, useDispatch } from "react-redux";
@@ -25,41 +25,42 @@ const Table = () => {
   );
   const hiddenColumns = useSelector(CountriesSelectors.selectHiddenColumns);
   const sortColumnOrder = useSelector(CountriesSelectors.selectSortedColumns);
-
-  // const [sortColumnOrder, setSortColumnOrder] = useState({
-  //   order: "asc",
-  //   accessor: null,
-  // });
+  //const showAllColumns = useSelector(CountriesSelectors.selectShownColumns);
 
   useEffect(() => {
     dispatch(fetchCountries());
-    restoreData();
+    //restoreData();
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("hiddenColumns", JSON.stringify(hiddenColumns));
-    localStorage.setItem("filterValue", JSON.stringify(filterValue));
-    localStorage.setItem("sortColumnOrder", JSON.stringify(sortColumnOrder));
-  }, [hiddenColumns, filterValue, sortColumnOrder]);
+  // useEffect(() => {
+  //   localStorage.setItem("filterValue", JSON.stringify(filterValue));
+  // }, [filterValue]);
+  // useEffect(() => {
+  //   localStorage.setItem("sortColumnOrder", JSON.stringify(sortColumnOrder));
+  // }, [sortColumnOrder]);
 
-  const restoreData = () => {
-    const STORE_DATA = [
-      {
-        value: localStorage.getItem("hiddenColumns"),
-        func: (value) => dispatch(setHiddenColumns(value)),
-      },
-      {
-        value: localStorage.getItem("filterValue"),
-        func: (value) => dispatch(setFilterValue(value)),
-      },
-      {
-        value: localStorage.getItem("sortColumnOrder"),
-        func: (value) => dispatch(setSortedCountries(value)),
-      },
-    ];
+  // useEffect(() => {
+  //   localStorage.setItem("hiddenColumns", JSON.stringify(hiddenColumns));
+  // }, [hiddenColumns]);
 
-    STORE_DATA.forEach(({ value, func }) => value && func(JSON.parse(value)));
-  };
+  // const restoreData = () => {
+  //   const STORE_DATA = [
+  //     {
+  //       value: localStorage.getItem("hiddenColumns"),
+  //       func: (value) => dispatch(setHiddenColumns(value)),
+  //     },
+  //     {
+  //       value: localStorage.getItem("filterValue"),
+  //       func: (value) => dispatch(setFilterValue(value)),
+  //     },
+  //     {
+  //       value: localStorage.getItem("sortColumnOrder"),
+  //       func: (value) => dispatch(setSortedCountries(value)),
+  //     },
+  //   ];
+
+  //   STORE_DATA.forEach(({ value, func }) => value && func(JSON.parse(value)));
+  // };
 
   const onFilterChange = (e) => {
     dispatch(setFilterValue(e.target.value));
@@ -105,7 +106,7 @@ const Table = () => {
   }
 
   const showAllColumns = () => {
-    setHiddenColumns([]);
+    dispatch(setHiddenColumns([]));
   };
 
   const onClickDropDown = (type, columnName) => {
