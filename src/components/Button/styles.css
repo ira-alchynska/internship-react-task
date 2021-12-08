@@ -35,3 +35,19 @@
 .arrow-active {
   transform: rotate(180deg);
 }
+
+.button-close {
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+}
+
+.btn-primary {
+  display: block;
+  margin-left: 500px;
+  border-radius: 2px;
+  background: skyblue;
+  width: 200px;
+  height: 30px;
+  text-align: center;
+}
