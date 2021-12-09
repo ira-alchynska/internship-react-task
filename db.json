@@ -2,8 +2,8 @@
   "countries": [
     {
       "id": 1,
-      "name": "USA7",
-      "iso3": "AFGFGHJK",
+      "name": "USA",
+      "iso3": "AFG",
       "capital": "Kabul",
       "currency": "AFN",
       "phone_code": "934"
@@ -18,45 +18,11 @@
     },
     {
       "id": 3,
-      "name": "Albania",
+      "name": "Albania1",
       "iso3": "ALB",
-      "iso2": "AL",
-      "numeric_code": "008",
-      "phone_code": "355",
       "capital": "Tirana",
-      "currency": "ALL",
-      "currency_symbol": "Lek",
-      "tld": ".al",
-      "native": "Shqipëria",
-      "region": "Europe",
-      "subregion": "Southern Europe",
-      "timezones": [
-        {
-          "zoneName": "Europe/Tirane",
-          "gmtOffset": 3600,
-          "gmtOffsetName": "UTC+01:00",
-          "abbreviation": "CET",
-          "tzName": "Central European Time"
-        }
-      ],
-      "translations": {
-        "kr": "알바니아",
-        "br": "Albânia",
-        "pt": "Albânia",
-        "nl": "Albanië",
-        "hr": "Albanija",
-        "fa": "آلبانی",
-        "de": "Albanien",
-        "es": "Albania",
-        "fr": "Albanie",
-        "ja": "アルバニア",
-        "it": "Albania",
-        "cn": "阿尔巴尼亚"
-      },
-      "latitude": "41.00000000",
-      "longitude": "20.00000000",
-      "emoji": "🇦🇱",
-      "emojiU": "U+1F1E6 U+1F1F1"
+      "currency": "ALLfgh",
+      "phone_code": "657"
     },
     {
       "id": 4,
@@ -70,43 +36,9 @@
       "id": 5,
       "name": "American Samoa",
       "iso3": "ASM",
-      "iso2": "AS",
-      "numeric_code": "016",
-      "phone_code": "+1-684",
       "capital": "Pago Pago",
       "currency": "USD",
-      "currency_symbol": "$",
-      "tld": ".as",
-      "native": "American Samoa",
-      "region": "Oceania",
-      "subregion": "Polynesia",
-      "timezones": [
-        {
-          "zoneName": "Pacific/Pago_Pago",
-          "gmtOffset": -39600,
-          "gmtOffsetName": "UTC-11:00",
-          "abbreviation": "SST",
-          "tzName": "Samoa Standard Time"
-        }
-      ],
-      "translations": {
-        "kr": "아메리칸사모아",
-        "br": "Samoa Americana",
-        "pt": "Samoa Americana",
-        "nl": "Amerikaans Samoa",
-        "hr": "Američka Samoa",
-        "fa": "ساموآی آمریکا",
-        "de": "Amerikanisch-Samoa",
-        "es": "Samoa Americana",
-        "fr": "Samoa américaines",
-        "ja": "アメリカ領サモア",
-        "it": "Samoa Americane",
-        "cn": "美属萨摩亚"
-      },
-      "latitude": "-14.33333333",
-      "longitude": "-170.00000000",
-      "emoji": "🇦🇸",
-      "emojiU": "U+1F1E6 U+1F1F8"
+      "phone_code": "+1-684"
     },
     {
       "id": 6,
@@ -154,47 +86,13 @@
       "id": 7,
       "name": "Angola",
       "iso3": "AGO",
-      "iso2": "AO",
-      "numeric_code": "024",
-      "phone_code": "244",
       "capital": "Luanda",
       "currency": "AOA",
-      "currency_symbol": "Kz",
-      "tld": ".ao",
-      "native": "Angola",
-      "region": "Africa",
-      "subregion": "Middle Africa",
-      "timezones": [
-        {
-          "zoneName": "Africa/Luanda",
-          "gmtOffset": 3600,
-          "gmtOffsetName": "UTC+01:00",
-          "abbreviation": "WAT",
-          "tzName": "West Africa Time"
-        }
-      ],
-      "translations": {
-        "kr": "앙골라",
-        "br": "Angola",
-        "pt": "Angola",
-        "nl": "Angola",
-        "hr": "Angola",
-        "fa": "آنگولا",
-        "de": "Angola",
-        "es": "Angola",
-        "fr": "Angola",
-        "ja": "アンゴラ",
-        "it": "Angola",
-        "cn": "安哥拉"
-      },
-      "latitude": "-12.50000000",
-      "longitude": "18.50000000",
-      "emoji": "🇦🇴",
-      "emojiU": "U+1F1E6 U+1F1F4"
+      "phone_code": "244"
     },
     {
       "id": 8,
-      "name": "Anguilla1",
+      "name": "Anguilla",
       "iso3": "AIA",
       "capital": "The Valley",
       "currency": "XCD",
@@ -309,43 +207,9 @@
       "id": 10,
       "name": "Antigua And Barbuda",
       "iso3": "ATG",
-      "iso2": "AG",
-      "numeric_code": "028",
-      "phone_code": "+1-268",
       "capital": "St. John's",
       "currency": "XCD",
-      "currency_symbol": "$",
-      "tld": ".ag",
-      "native": "Antigua and Barbuda",
-      "region": "Americas",
-      "subregion": "Caribbean",
-      "timezones": [
-        {
-          "zoneName": "America/Antigua",
-          "gmtOffset": -14400,
-          "gmtOffsetName": "UTC-04:00",
-          "abbreviation": "AST",
-          "tzName": "Atlantic Standard Time"
-        }
-      ],
-      "translations": {
-        "kr": "앤티가 바부다",
-        "br": "Antígua e Barbuda",
-        "pt": "Antígua e Barbuda",
-        "nl": "Antigua en Barbuda",
-        "hr": "Antigva i Barbuda",
-        "fa": "آنتیگوا و باربودا",
-        "de": "Antigua und Barbuda",
-        "es": "Antigua y Barbuda",
-        "fr": "Antigua-et-Barbuda",
-        "ja": "アンティグア・バーブーダ",
-        "it": "Antigua e Barbuda",
-        "cn": "安提瓜和巴布达"
-      },
-      "latitude": "17.05000000",
-      "longitude": "-61.80000000",
-      "emoji": "🇦🇬",
-      "emojiU": "U+1F1E6 U+1F1EC"
+      "phone_code": "1268"
     },
     {
       "id": 11,

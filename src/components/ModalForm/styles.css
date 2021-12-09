@@ -22,3 +22,10 @@
   align-self: center;
   margin-top: 20px;
 }
+
+.error {
+  font-size: xx-small;
+  font-weight: 400;
+  font-style: italic;
+  color: tomato;
+}

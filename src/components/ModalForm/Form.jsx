@@ -1,9 +1,11 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Loader from "../../Loader/Loader.jsx";
+
 import { putCountries } from "../../api/countries";
 import { fetchCountries, resetCountries } from "../../redux/actions";
-import validationFormValues from "./FormValidation";
+import formValidation from "./FormValidation";
+
 import "./styles.css";
 
 const Form = ({ currentItem }) => {
@@ -19,7 +21,8 @@ const Form = ({ currentItem }) => {
   };
 
   const [formValues, setFormValues] = useState(initialValues);
-  const [isLoading, setIsLoading] = useState(false);
+
+  const [formErrors, setFormErrors] = useState({});
 
   const resetForm = () => {
     setFormValues(initialValues);
@@ -32,26 +35,27 @@ const Form = ({ currentItem }) => {
     });
   };
 
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    // if (!validationFormValues({ name, iso3, capital, currency, phone_code })) {
-    //   return;
-    // }
-    try {
-      await putCountries(formValues, initialValues.id);
+    const errors = formValidation(formValues);
 
-      dispatch(resetCountries());
-      dispatch(fetchCountries(true));
-      setIsLoading(true);
-    } catch (e) {
-      alert("Not found");
-      console.log(e.message);
+    console.log("formErrors", Object.keys(formErrors).length);
+    if (Object.keys(errors).length) {
+      setFormErrors(errors);
+      return;
     }
+    putCountries(formValues, initialValues.id);
+    //setIsLoading(true);
+    dispatch(resetCountries());
+    dispatch(fetchCountries(true));
+    //setIsLoading(true);
+
+    console.log("state", formValues);
   };
 
   return (
     <>
-      {isLoading && <Loader />}
+      {/* {isLoading && <Loader />} */}
       <form className="modal-form" onSubmit={onSubmit}>
         <label className="label-form" htmlFor="id">
           ID
@@ -64,6 +68,7 @@ const Form = ({ currentItem }) => {
           value={formValues.id}
           className="input-form"
         />
+        {formErrors.id && <p className="error">{formErrors.id}</p>}
 
         <label className="label-form" htmlFor="name">
           NAME
@@ -76,6 +81,7 @@ const Form = ({ currentItem }) => {
           className="input-form"
           value={formValues.name}
         />
+        {formErrors.name && <p className="error">{formErrors.name}</p>}
 
         <label className="label-form" htmlFor="iso3">
           ISO
@@ -88,6 +94,7 @@ const Form = ({ currentItem }) => {
           value={formValues.iso3}
           className="input-form"
         />
+        {formErrors.iso3 && <p className="error">{formErrors.iso3}</p>}
 
         <label className="label-form" htmlFor="capital">
           CAPITAL
@@ -100,6 +107,7 @@ const Form = ({ currentItem }) => {
           className="input-form"
           value={formValues.capital}
         />
+        {formErrors.capital && <p className="error">{formErrors.capital}</p>}
 
         <label className="label-form" htmlFor="currency">
           CURRENCY
@@ -112,6 +120,7 @@ const Form = ({ currentItem }) => {
           className="input-form"
           value={formValues.currency}
         />
+        {formErrors.currency && <p className="error">{formErrors.currency}</p>}
 
         <label className="label-form" htmlFor="phone_code">
           PHONE_CODE
@@ -124,6 +133,9 @@ const Form = ({ currentItem }) => {
           className="input-form"
           value={formValues.phone_code}
         />
+        {formErrors.phone_code && (
+          <p className="error">{formErrors.phone_code}</p>
+        )}
 
         <button type="submit" className="btnEditRow">
           Edit
@@ -132,4 +144,5 @@ const Form = ({ currentItem }) => {
     </>
   );
 };
+
 export default Form;

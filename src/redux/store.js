@@ -2,11 +2,6 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import { countryReducer } from "./reducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-import {
-  SET_SORT_COUNTRIES,
-  SET_FILTER_VALUE,
-  SET_HIDE_COLUMNS,
-} from "./types.js";
 
 const rootReducer = combineReducers({
   country: countryReducer,
@@ -42,5 +37,3 @@ store.subscribe(() => {
     JSON.stringify(tempStore.country.sortColumnOrder)
   );
 });
-// const unsubscribe = store.subscribe();
-// unsubscribe();
