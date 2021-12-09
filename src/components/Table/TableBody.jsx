@@ -1,8 +1,16 @@
-import React from "react";
-import { useSelector } from "react-redux";
-// import Button from "../Button/Button";
-// import Pencil from "../../images/pencil.png";
-const TableBody = ({ countriesData, columns, showModal }) => {
+import React, { useState } from "react";
+import Modal from "../Modal/Modal";
+import images from "../../images/index";
+
+const TableBody = ({ countriesData, columns }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState(null);
+
+  const onRowClick = (country) => {
+    setIsModalOpen(true);
+    setModalData(country);
+  };
+
   return (
     <div className="table-body">
       {countriesData.map((country) => {
@@ -15,7 +23,11 @@ const TableBody = ({ countriesData, columns, showModal }) => {
         const id = country.id;
 
         return (
-          <div className="table-row" key={id}>
+          <div
+            className="table-row"
+            key={country.id}
+            onClick={() => onRowClick(country)}
+          >
             {columnsWithData.map((content, index) => (
               <div key={index} className="table-column">
                 {content}
@@ -24,6 +36,9 @@ const TableBody = ({ countriesData, columns, showModal }) => {
           </div>
         );
       })}
+      {isModalOpen && (
+        <Modal currentItem={modalData} onClose={() => setIsModalOpen(false)} />
+      )}
     </div>
   );
 };

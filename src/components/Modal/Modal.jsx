@@ -1,11 +1,18 @@
 import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
-import EditCountryForm from "../ModalForm/Form";
+import Form from "../ModalForm/Form";
+import Button from "../Button/Button";
+import Images from "../../images";
 import "./styles.css";
 
 const modalRoot = document.querySelector("#modal-root");
 
-export default function Modal({ onClose }) {
+export default function Modal({
+  currentItem,
+  formValues,
+  setFormValues,
+  onClose,
+}) {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.code === "Escape") {
@@ -29,7 +36,18 @@ export default function Modal({ onClose }) {
   return createPortal(
     <div className="Modal__backdrop" onClick={handleBackdropClick}>
       <div className="Modal__content">
-        <EditCountryForm />
+        <Button
+          className="button-close"
+          type="button"
+          icon={Images.close}
+          onClick={onClose}
+        />
+
+        <Form
+          currentItem={currentItem}
+          formValues={formValues}
+          setFormValues={setFormValues}
+        />
       </div>
     </div>,
     modalRoot

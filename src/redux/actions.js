@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   FETCH_COUNTRIES_SUCCESS,
   FETCH_COUNTRIES_REQUEST,
@@ -7,7 +6,11 @@ import {
   SET_SORT_COUNTRIES,
   SET_FILTER_VALUE,
   SET_HIDE_COLUMNS,
+  VALIDATE_FORM_ERROR,
+  RESET_COUNTRIES,
 } from "./types.js";
+import { getCountries } from "../api/countries";
+import isLoader from "../Loader/Loader.jsx";
 
 export const setCountriesSuccess = (countries) => {
   return {
@@ -54,17 +57,25 @@ export const setSortedCountries = (payload) => {
   return {
     type: SET_SORT_COUNTRIES,
     payload,
-    // : {
-    //   order: "asc",
-    //   accessor: null,
-    // },
+  };
+};
+export const validationFormError = (payload) => {
+  return {
+    type: VALIDATE_FORM_ERROR,
+    payload,
+  };
+};
+export const resetCountries = () => {
+  return {
+    type: RESET_COUNTRIES,
   };
 };
 
-export const fetchCountries = () => async (dispatch) => {
+export const fetchCountries = (page) => async (dispatch) => {
   dispatch(setCountriesRequest());
+  dispatch(isLoader());
   try {
-    const { data } = await axios.get(`http://localhost:4040/countries/`);
+    const data = await getCountries(page);
     dispatch(setCountriesSuccess(data));
   } catch (error) {
     dispatch(setCountriesError(error.message));

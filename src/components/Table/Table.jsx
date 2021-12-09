@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
+import Loader from "../../Loader/Loader.jsx";
 import CountriesSelectors from "../../redux/selectors.js";
 import { useSelector, useDispatch } from "react-redux";
 import Filter from "../Filter/Filter.jsx";
@@ -14,9 +14,11 @@ import {
 import "./styles.css";
 
 const Table = () => {
+  const [page, setPage] = useState(1);
+
   const dispatch = useDispatch();
 
-  const loading = useSelector(CountriesSelectors.selectIsLoading); // library 'reselect'
+  const loading = useSelector(CountriesSelectors.selectIsLoading);
   const error = useSelector(CountriesSelectors.selectError);
   const headerData = useSelector(CountriesSelectors.selectHeaderData);
   const filterValue = useSelector(CountriesSelectors.selectFilterValue);
@@ -26,40 +28,9 @@ const Table = () => {
   const hiddenColumns = useSelector(CountriesSelectors.selectHiddenColumns);
   const sortColumnOrder = useSelector(CountriesSelectors.selectSortedColumns);
 
-  // const [sortColumnOrder, setSortColumnOrder] = useState({
-  //   order: "asc",
-  //   accessor: null,
-  // });
-
   useEffect(() => {
-    dispatch(fetchCountries());
-    restoreData();
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("hiddenColumns", JSON.stringify(hiddenColumns));
-    localStorage.setItem("filterValue", JSON.stringify(filterValue));
-    localStorage.setItem("sortColumnOrder", JSON.stringify(sortColumnOrder));
-  }, [hiddenColumns, filterValue, sortColumnOrder]);
-
-  const restoreData = () => {
-    const STORE_DATA = [
-      {
-        value: localStorage.getItem("hiddenColumns"),
-        func: (value) => dispatch(setHiddenColumns(value)),
-      },
-      {
-        value: localStorage.getItem("filterValue"),
-        func: (value) => dispatch(setFilterValue(value)),
-      },
-      {
-        value: localStorage.getItem("sortColumnOrder"),
-        func: (value) => dispatch(setSortedCountries(value)),
-      },
-    ];
-
-    STORE_DATA.forEach(({ value, func }) => value && func(JSON.parse(value)));
-  };
+    dispatch(fetchCountries(page));
+  }, [page]);
 
   const onFilterChange = (e) => {
     dispatch(setFilterValue(e.target.value));
@@ -105,7 +76,16 @@ const Table = () => {
   }
 
   const showAllColumns = () => {
-    setHiddenColumns([]);
+    dispatch(setHiddenColumns([]));
+  };
+
+  // useEffect(() => {
+  //   console.log(page);
+  //   dispatch(fetchCountries(10, page));
+  // }, [page]);
+
+  const showMoreCountries = () => {
+    setPage(page + 1);
   };
 
   const onClickDropDown = (type, columnName) => {
@@ -132,28 +112,37 @@ const Table = () => {
   };
 
   return (
-    <div className="table">
-      <TableHeader
-        onSortChange={onSortChange}
-        headerData={headerWithoutFilteredColumns}
-        sortedOrder={sortColumnOrder.order}
-        sortedAccessor={sortColumnOrder.accessor}
-        onClickDropDown={onClickDropDown}
-        sortColumnOrder={sortColumnOrder}
-        setSortedCountries={setSortedCountries}
-      />
-      <div className="table-filter-row">
-        <Filter inputValue={filterValue} onChange={onFilterChange} />
-      </div>
-      {loading && <div>Loading...</div>}
-      {error && <div>Error occurred</div>}
-      {!loading && !error && (
-        <TableBody
-          countriesData={sortedCountries}
-          columns={headerWithoutFilteredColumns}
+    <>
+      <div className="table">
+        <TableHeader
+          onSortChange={onSortChange}
+          headerData={headerWithoutFilteredColumns}
+          sortedOrder={sortColumnOrder.order}
+          sortedAccessor={sortColumnOrder.accessor}
+          onClickDropDown={onClickDropDown}
+          sortColumnOrder={sortColumnOrder}
+          setSortedCountries={setSortedCountries}
         />
-      )}
-    </div>
+        <div className="table-filter-row">
+          <Filter inputValue={filterValue} onChange={onFilterChange} />
+        </div>
+        {loading && <Loader />}
+        {error && <div>Error occurred</div>}
+        {!loading && !error && (
+          <TableBody
+            countriesData={sortedCountries}
+            columns={headerWithoutFilteredColumns}
+          />
+        )}
+      </div>
+      <button
+        className="btn-primary"
+        type="button"
+        onClick={() => showMoreCountries()}
+      >
+        Load more...
+      </button>
+    </>
   );
 };
 export default Table;

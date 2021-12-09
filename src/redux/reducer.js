@@ -8,24 +8,29 @@ import {
   SET_SORT_COUNTRIES,
   SET_HEADER_DATA,
   SET_FILTER_VALUE,
+  RESET_COUNTRIES,
 } from "./types.js";
+
+const hiddenColumns = localStorage.getItem("hiddenColumns");
+const filterValue = localStorage.getItem("filterValue");
+const sortColumnOrder = localStorage.getItem("sortColumnOrder");
 
 const initialState = {
   headerData: columns,
-  filterValue: "",
-  hiddenColumns: [],
+  filterValue: JSON.parse(filterValue) || "",
+  hiddenColumns: JSON.parse(hiddenColumns) || [],
   countries: [],
   loading: false,
   fetched: false,
   error: null,
-  sortColumnOrder: {
+  sortColumnOrder: JSON.parse(sortColumnOrder) || {
     order: "asc",
     accessor: null,
   },
+  query: 5,
 };
 
 export const countryReducer = (state = initialState, action) => {
-  console.log(state, action);
   switch (action.type) {
     case FETCH_COUNTRIES_REQUEST:
       return {
@@ -36,7 +41,7 @@ export const countryReducer = (state = initialState, action) => {
     case FETCH_COUNTRIES_SUCCESS:
       return {
         ...state,
-        countries: action.payload,
+        countries: [...state.countries, ...action.payload],
         loading: false,
         fetched: true,
       };
@@ -70,6 +75,11 @@ export const countryReducer = (state = initialState, action) => {
       return {
         ...state,
         sortColumnOrder: action.payload,
+      };
+    case RESET_COUNTRIES:
+      return {
+        ...state,
+        countries: [],
       };
 
     default:
