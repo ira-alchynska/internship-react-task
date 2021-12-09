@@ -8,7 +8,7 @@ const validationFormValues = ({
   phone_code,
 }) => {
   if (name < 3 || name > 20) {
-    dispatchEvent(
+    dispatch(
       validationFormError({
         message: "Country name should be from 3 to 20 letters ",
       })
@@ -16,7 +16,7 @@ const validationFormValues = ({
     return;
   }
   if (iso3 < 1 || iso3 > 5) {
-    dispatchEvent(
+    dispatch(
       validationFormError({
         message: "Country iso3 should be from 1 to 5 letters ",
       })
@@ -24,7 +24,7 @@ const validationFormValues = ({
     return;
   }
   if (capital < 3 || capital > 20) {
-    dispatchEvent(
+    dispatch(
       validationFormError({
         message: "Country capital should be from 3 to 20 letters ",
       })
@@ -32,7 +32,7 @@ const validationFormValues = ({
     return;
   }
   if (currency < 1 || currency > 5) {
-    dispatchEvent(
+    dispatch(
       validationFormError({
         message: "Country currency should be from 1 to 5 letters ",
       })
@@ -40,7 +40,7 @@ const validationFormValues = ({
     return;
   }
   if (phone_code < 1 || phone_code > 5) {
-    dispatchEvent(
+    dispatch(
       validationFormError({
         message: "Country phone_code should be from 1 to 5 letters ",
       })

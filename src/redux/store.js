@@ -26,26 +26,21 @@ export const store = createStore(
 
 store.subscribe(() => {
   let tempStore = store.getState();
-  switch (true) {
-    case SET_HIDE_COLUMNS === "HIDE_COLUMNS":
-      console.log("switch1");
-      localStorage.setItem(
-        "hiddenColumns",
-        JSON.stringify(tempStore.country.hiddenColumns)
-      );
 
-    case SET_FILTER_VALUE === "SET_FILTER_VALUE":
-      console.log("switch2");
-      localStorage.setItem(
-        "filterValue",
-        JSON.stringify(tempStore.country.filterValue)
-      );
+  localStorage.setItem(
+    "hiddenColumns",
+    JSON.stringify(tempStore.country.hiddenColumns)
+  );
 
-    case SET_SORT_COUNTRIES === "SORT_COUNTRIES":
-      console.log("switch3");
-      localStorage.setItem(
-        "sortColumnOrder",
-        JSON.stringify(tempStore.country.sortColumnOrder)
-      );
-  }
+  localStorage.setItem(
+    "filterValue",
+    JSON.stringify(tempStore.country.filterValue)
+  );
+
+  localStorage.setItem(
+    "sortColumnOrder",
+    JSON.stringify(tempStore.country.sortColumnOrder)
+  );
 });
+// const unsubscribe = store.subscribe();
+// unsubscribe();
