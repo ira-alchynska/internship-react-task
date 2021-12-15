@@ -1,43 +1,43 @@
 import React, { useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
 import Loader from "../../Loader/Loader.jsx";
-import CountriesSelectors from "../../redux/selectors.js";
-import { useSelector, useDispatch } from "react-redux";
+
 import Filter from "../Filter/Filter.jsx";
 import TableHeader from "./TableHeader.jsx";
 import TableBody from "./TableBody.jsx";
-import {
-  fetchCountries,
-  setFilterValue,
-  setHiddenColumns,
-  setSortedCountries,
-} from "../../redux/actions.js";
+
 import "./styles.css";
 
-const Table = () => {
+// 1. CountriesTablePage - dummy component that renders CountriesTable
+
+// 2. CountriesTable - component that fetch and get all table data from redux
+
+// 3. Table - general components that receive data as PROPS
+
+// 4. Create two more reducers or implement local business logic for two new tables
+
+const Table = ({
+  onPageChange,
+  onFilterChange,
+  onHideColumn,
+  onShowAll,
+  onSortChange,
+  isLoading,
+  error,
+  headerData,
+  filteredCountries,
+  filterValue,
+  hiddenColumns,
+  sortColumnOrder,
+}) => {
   const [page, setPage] = useState(1);
 
-  const dispatch = useDispatch();
-
-  const loading = useSelector(CountriesSelectors.selectIsLoading);
-  const error = useSelector(CountriesSelectors.selectError);
-  const headerData = useSelector(CountriesSelectors.selectHeaderData);
-  const filterValue = useSelector(CountriesSelectors.selectFilterValue);
-  const filteredCountries = useSelector(
-    CountriesSelectors.selectFilteredCountries
-  );
-  const hiddenColumns = useSelector(CountriesSelectors.selectHiddenColumns);
-  const sortColumnOrder = useSelector(CountriesSelectors.selectSortedColumns);
-
   useEffect(() => {
-    dispatch(fetchCountries(page));
+    onPageChange && onPageChange(page);
   }, [page]);
 
-  const onFilterChange = (e) => {
-    dispatch(setFilterValue(e.target.value));
-  };
-
-  const hideColumn = (columnName) => {
-    dispatch(setHiddenColumns([...hiddenColumns, columnName]));
+  const onChangeFilter = (e) => {
+    onFilterChange && onFilterChange(e.target.value);
   };
 
   const headerWithoutFilteredColumns = headerData.filter((column) => {
@@ -46,8 +46,12 @@ const Table = () => {
     return !isHiddenColumn;
   });
 
-  const onSortChange = ({ order, accessor }) => {
-    dispatch(setSortedCountries({ order, accessor }));
+  const hideColumn = (columnName) => {
+    onHideColumn && onHideColumn(columnName);
+  };
+
+  const onChangeSort = ({ order, accessor }) => {
+    onSortChange && onSortChange(order, accessor);
   };
 
   let sortedCountries = [...filteredCountries];
@@ -76,13 +80,8 @@ const Table = () => {
   }
 
   const showAllColumns = () => {
-    dispatch(setHiddenColumns([]));
+    onShowAll && onShowAll();
   };
-
-  // useEffect(() => {
-  //   console.log(page);
-  //   dispatch(fetchCountries(10, page));
-  // }, [page]);
 
   const showMoreCountries = () => {
     setPage(page + 1);
@@ -97,38 +96,38 @@ const Table = () => {
         showAllColumns();
         break;
       case "ASC":
-        onSortChange({
+        onChangeSort({
           order: "asc",
           accessor: columnName,
         });
         break;
       case "DESC":
-        onSortChange({
+        onChangeSort({
           order: "desc",
           accessor: columnName,
         });
         break;
     }
   };
-
   return (
     <>
       <div className="table">
+        <Toaster />
         <TableHeader
-          onSortChange={onSortChange}
+          onSortChange={onChangeSort}
           headerData={headerWithoutFilteredColumns}
           sortedOrder={sortColumnOrder.order}
           sortedAccessor={sortColumnOrder.accessor}
           onClickDropDown={onClickDropDown}
           sortColumnOrder={sortColumnOrder}
-          setSortedCountries={setSortedCountries}
+          //setSortedCountries={setSortedCountries}
         />
         <div className="table-filter-row">
-          <Filter inputValue={filterValue} onChange={onFilterChange} />
+          <Filter inputValue={filterValue} onChange={onChangeFilter} />
         </div>
-        {loading && <Loader />}
+        {isLoading && <Loader />}
         {error && <div>Error occurred</div>}
-        {!loading && !error && (
+        {!isLoading && !error && (
           <TableBody
             countriesData={sortedCountries}
             columns={headerWithoutFilteredColumns}

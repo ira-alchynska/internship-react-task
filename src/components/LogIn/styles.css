@@ -1,0 +1,28 @@
+.login-form {
+  width: 320;
+}
+
+.form-control {
+  padding: 5px;
+  margin-bottom: 10px;
+  outline: none;
+  width: 200px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+.title {
+  font-size: 28px;
+}
+
+.btn {
+  display: block;
+  margin-left: auto;
+  margin-right:auto;
+  border-radius: 2px;
+  background: rgb(160, 215, 236);
+  width: 200px;
+  height: 30px;
+  text-align: center;
+}

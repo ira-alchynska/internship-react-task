@@ -8,7 +8,10 @@ import {
   SET_SORT_COUNTRIES,
   SET_HEADER_DATA,
   SET_FILTER_VALUE,
+  VALIDATE_FORM_ERROR,
   RESET_COUNTRIES,
+  SET_MODAL_OPEN,
+  SET_MODAL_DATA,
 } from "./types.js";
 
 const hiddenColumns = localStorage.getItem("hiddenColumns");
@@ -28,6 +31,9 @@ const initialState = {
     accessor: null,
   },
   query: 5,
+  isModalOpen: false,
+  modalData: null,
+  formErrors: {},
 };
 
 export const countryReducer = (state = initialState, action) => {
@@ -41,7 +47,7 @@ export const countryReducer = (state = initialState, action) => {
     case FETCH_COUNTRIES_SUCCESS:
       return {
         ...state,
-        countries: [...state.countries, ...action.payload],
+        countries: action.payload,
         loading: false,
         fetched: true,
       };
@@ -80,6 +86,22 @@ export const countryReducer = (state = initialState, action) => {
       return {
         ...state,
         countries: [],
+      };
+    case VALIDATE_FORM_ERROR:
+      return {
+        ...state,
+        formErrors: action.payload,
+      };
+    case SET_MODAL_OPEN:
+      return {
+        ...state,
+        isModalOpen: !state.isModalOpen,
+      };
+
+    case SET_MODAL_DATA:
+      return {
+        ...state,
+        modalData: action.payload,
       };
 
     default:

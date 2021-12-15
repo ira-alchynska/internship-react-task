@@ -1,3 +1,12 @@
 .App {
   text-align: center;
 }
+
+.NavLink {
+  margin-right: 150px;
+  font-size: 20px;
+  color: rgb(160, 215, 236);
+}
+.active {
+  color: rgb(184, 12, 12);
+}

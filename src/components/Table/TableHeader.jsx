@@ -11,8 +11,6 @@ const TableHeader = ({
   headerData,
   onSortChange,
   onClickDropDown,
-  sortColumnOrder,
-  setSortedCountries,
   sortedOrder = "asc",
   sortedAccessor,
 }) => {

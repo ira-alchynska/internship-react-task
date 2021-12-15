@@ -1,10 +1,13 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { countryReducer } from "./reducer";
+
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
+import { statesReducer } from "./states/statesReducer";
 
 const rootReducer = combineReducers({
   country: countryReducer,
+  state: statesReducer,
 });
 
 const logger = (store) => (next) => (action) => {
