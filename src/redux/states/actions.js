@@ -82,7 +82,6 @@ export const fetchStates = (page) => async (dispatch, getState) => {
     } else {
       dispatch(setStatesSuccess([...states, ...data]));
     }
-    console.log(data, "data states");
   } catch (error) {
     dispatch(setStatesError(error.message));
   }

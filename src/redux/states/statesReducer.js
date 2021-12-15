@@ -43,7 +43,7 @@ export const statesReducer = (state = initialState, action) => {
     case FETCH_STATES_SUCCESS:
       return {
         ...state,
-        states: [...state.states, ...action.payload],
+        states: action.payload,
         loading: false,
         fetched: true,
       };

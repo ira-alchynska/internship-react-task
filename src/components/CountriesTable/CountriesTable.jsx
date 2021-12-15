@@ -1,13 +1,16 @@
 import React from "react";
 import Table from "../Table/Table";
-import CountriesSelectors from "../../redux/selectors";
+import Modal from "../Modal/Modal";
+import Form from "../ModalFormCountries/CountriesForm";
+import CountriesSelectors from "../../redux/countries/selectors";
 import { useDispatch, useSelector } from "react-redux";
+import { setModalOpen } from "../../redux/countries/actions";
 import {
   fetchCountries,
   setFilterValue,
   setHiddenColumns,
   setSortedCountries,
-} from "../../redux/actions";
+} from "../../redux/countries/actions";
 
 const CountriesTable = () => {
   const dispatch = useDispatch();
@@ -42,20 +45,24 @@ const CountriesTable = () => {
   };
 
   return (
-    <Table
-      onPageChange={onPageChange}
-      onFilterChange={onFilterChange}
-      onHideColumn={onHideColumn}
-      onSortChange={onSortChange}
-      onShowAll={onShowAll}
-      isLoading={isLoading}
-      error={error}
-      headerData={headerData}
-      filterValue={filterValue}
-      filteredCountries={filteredCountries}
-      hiddenColumns={hiddenColumns}
-      sortColumnOrder={sortColumnOrder}
-    />
+    <>
+      <Modal Form={Form} />
+
+      <Table
+        onPageChange={onPageChange}
+        onFilterChange={onFilterChange}
+        onHideColumn={onHideColumn}
+        onSortChange={onSortChange}
+        onShowAll={onShowAll}
+        isLoading={isLoading}
+        error={error}
+        headerData={headerData}
+        filterValue={filterValue}
+        filteredCountries={filteredCountries}
+        hiddenColumns={hiddenColumns}
+        sortColumnOrder={sortColumnOrder}
+      />
+    </>
   );
 };
 

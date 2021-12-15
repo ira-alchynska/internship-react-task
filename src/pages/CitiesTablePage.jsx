@@ -1,10 +1,7 @@
 import React from "react";
+import CitiesTable from "../components/CitiesTable/CitiesTable";
 const CitiesTablePage = () => {
-  return (
-    <>
-      <h1>Cities Page</h1>
-    </>
-  );
+  return <CitiesTable />;
 };
 
 export default CitiesTablePage;

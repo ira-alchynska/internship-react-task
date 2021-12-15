@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setModalOpen, setModalData } from "../../redux/actions";
+import { setModalOpen, setModalData } from "../../redux/countries/actions";
 
 const TableBody = ({ countriesData, columns }) => {
   const dispatch = useDispatch();

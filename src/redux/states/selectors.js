@@ -1,13 +1,11 @@
-const selectStatesData = (state) => state.state.state;
+const selectStatesData = (state) => state.state.states;
 const selectIsLoadingStates = (state) => state.state.loading;
 const selectErrorStats = (state) => state.state.error;
 const selectHeaderDataStates = (state) => state.state.headerData;
 const selectFilterValueStates = (state) => state.state.filterValue;
 const selectFilteredStates = (state) => {
   const StatesData = selectStatesData(state);
-  console.log("SatesData", StatesData);
   const filterValueStates = selectFilterValueStates(state);
-
   return StatesData.filter((state) => {
     return state.name.toLowerCase().includes(filterValueStates.toLowerCase());
   });

@@ -43,6 +43,7 @@
 }
 
 .btn-primary {
+  margin-top: 10px;
   display: block;
   margin-left: 500px;
   border-radius: 2px;

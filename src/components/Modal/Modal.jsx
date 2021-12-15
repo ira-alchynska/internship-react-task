@@ -1,18 +1,23 @@
 import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setModalOpen } from "../../redux/countries/actions";
+import CountriesSelectors from "../../redux/countries/selectors";
 import { createPortal } from "react-dom";
-import Form from "../ModalForm/Form";
 import Button from "../Button/Button";
 import Images from "../../images";
 import "./styles.css";
 
 const modalRoot = document.querySelector("#modal-root");
 
-export default function Modal({
-  currentItem,
-  formValues,
-  setFormValues,
-  onClose,
-}) {
+export default function Modal({ Form }) {
+  const dispatch = useDispatch();
+  const isModalOpen = useSelector(CountriesSelectors.selectIsModalOpen);
+  const modalData = useSelector(CountriesSelectors.selectModalData);
+
+  const onClose = () => {
+    dispatch(setModalOpen());
+  };
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.code === "Escape") {
@@ -33,6 +38,8 @@ export default function Modal({
     }
   };
 
+  if (!isModalOpen) return null;
+
   return createPortal(
     <div className="Modal__backdrop" onClick={handleBackdropClick}>
       <div className="Modal__content">
@@ -43,11 +50,7 @@ export default function Modal({
           onClick={onClose}
         />
 
-        <Form
-          currentItem={currentItem}
-          formValues={formValues}
-          setFormValues={setFormValues}
-        />
+        <Form currentItem={modalData} />
       </div>
     </div>,
     modalRoot

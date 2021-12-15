@@ -8,14 +8,6 @@ import TableBody from "./TableBody.jsx";
 
 import "./styles.css";
 
-// 1. CountriesTablePage - dummy component that renders CountriesTable
-
-// 2. CountriesTable - component that fetch and get all table data from redux
-
-// 3. Table - general components that receive data as PROPS
-
-// 4. Create two more reducers or implement local business logic for two new tables
-
 const Table = ({
   onPageChange,
   onFilterChange,
@@ -42,6 +34,7 @@ const Table = ({
 
   const headerWithoutFilteredColumns = headerData.filter((column) => {
     const columnAccessor = column.accessor;
+
     const isHiddenColumn = hiddenColumns.includes(columnAccessor);
     return !isHiddenColumn;
   });
@@ -120,7 +113,6 @@ const Table = ({
           sortedAccessor={sortColumnOrder.accessor}
           onClickDropDown={onClickDropDown}
           sortColumnOrder={sortColumnOrder}
-          //setSortedCountries={setSortedCountries}
         />
         <div className="table-filter-row">
           <Filter inputValue={filterValue} onChange={onChangeFilter} />

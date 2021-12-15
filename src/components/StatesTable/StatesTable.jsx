@@ -1,5 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Table from "../Table/Table";
+import Modal from "../Modal/Modal";
+import ModalFormStates from "../ModalFormStates/ModalFormStates";
 import StatesSelectors from "../../redux/states/selectors";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -9,28 +11,20 @@ import {
   setHiddenColumnsStates,
   setSortedStates,
 } from "../../redux/states/actions";
-import "./styles.css";
 
 const StatesTable = () => {
+  console.log(fetchStates());
   const dispatch = useDispatch();
 
-  const isLoadingStates = useSelector(StatesSelectors.selectIsLoadingStates);
-  const errorStates = useSelector(StatesSelectors.selectErrorStats);
-  const headerDataStates = useSelector(StatesSelectors.selectHeaderDataStates);
-  const filterValueStates = useSelector(
-    StatesSelectors.selectFilterValueStates
-  );
-  const filteredStates = useSelector(StatesSelectors.selectFilteredStates);
-  const hiddenColumnsStates = useSelector(
-    StatesSelectors.selectHiddenColumnsStates
-  );
-  const sortColumnOrderStates = useSelector(
+  const isLoading = useSelector(StatesSelectors.selectIsLoadingStates);
+  const error = useSelector(StatesSelectors.selectErrorStats);
+  const headerData = useSelector(StatesSelectors.selectHeaderDataStates);
+  const filterValue = useSelector(StatesSelectors.selectFilterValueStates);
+  const filteredCountries = useSelector(StatesSelectors.selectFilteredStates);
+  const hiddenColumns = useSelector(StatesSelectors.selectHiddenColumnsStates);
+  const sortColumnOrder = useSelector(
     StatesSelectors.selectSortedColumnsStates
   );
-
-  useEffect((page) => {
-    dispatch(fetchStates(page));
-  }, []);
 
   const onPageChange = (page) => {
     dispatch(fetchStates(page));
@@ -54,19 +48,21 @@ const StatesTable = () => {
 
   return (
     <div className="table">
+      <Modal Form={ModalFormStates} />
+
       <Table
         onPageChange={onPageChange}
         onFilterChange={onFilterChange}
         onHideColumn={onHideColumn}
         onSortChange={onSortChange}
         onShowAll={onShowAll}
-        isLoadingStates={isLoadingStates}
-        errorStates={errorStates}
-        headerDataStates={headerDataStates}
-        filterValueStates={filterValueStates}
-        filteredStates={filteredStates}
-        hiddenColumnsStates={hiddenColumnsStates}
-        sortColumnOrderStates={sortColumnOrderStates}
+        isLoading={isLoading}
+        error={error}
+        headerData={headerData}
+        filterValue={filterValue}
+        filteredCountries={filteredCountries}
+        hiddenColumns={hiddenColumns}
+        sortColumnOrder={sortColumnOrder}
       />
     </div>
   );
