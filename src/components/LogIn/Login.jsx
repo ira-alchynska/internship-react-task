@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setIsAuthenticated } from "../../redux/auth/authActions";
+import { setIsAuthenticated, setUserId } from "../../redux/auth/authActions";
 import "./styles.css";
 // add localStorage to other 2 pages
 //  Create modalForm for page cities and states
@@ -30,6 +30,7 @@ const Login = () => {
     const hardcodedCred = {
       email: "email@email.com",
       password: "password123",
+      //userId: 1,
     };
 
     if (
@@ -37,21 +38,19 @@ const Login = () => {
       passwordInput == hardcodedCred.password
     ) {
       dispatch(setIsAuthenticated(true));
-      //combination is good. Log them in.
-      //this token can be anything. You can use random.org to generate a random string;
-      const token = "123456abcdef";
-      localStorage.setItem("auth-token", token);
-      //go to www.website.com/todo
+      //dispatch(setUserId(userId));
+
+      //localStorage.setItem("userId", userId);
+
       history("/");
     } else {
-      //bad combination
       alert("wrong email or password combination");
     }
   };
   return (
     <>
       <div className="login-page">
-        <h2 className="title">Log in </h2>
+        <h2 className="title">Log in</h2>
         <form
           autoComplete="off"
           onSubmit={handleLoginSubmit}

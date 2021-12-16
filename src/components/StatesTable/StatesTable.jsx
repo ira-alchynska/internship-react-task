@@ -3,6 +3,7 @@ import Table from "../Table/Table";
 import Modal from "../Modal/Modal";
 import ModalFormStates from "../ModalFormStates/ModalFormStates";
 import StatesSelectors from "../../redux/states/selectors";
+
 import { useSelector, useDispatch } from "react-redux";
 
 import {
@@ -47,9 +48,8 @@ const StatesTable = () => {
   };
 
   return (
-    <div className="table">
+    <>
       <Modal Form={ModalFormStates} />
-
       <Table
         onPageChange={onPageChange}
         onFilterChange={onFilterChange}
@@ -64,7 +64,7 @@ const StatesTable = () => {
         hiddenColumns={hiddenColumns}
         sortColumnOrder={sortColumnOrder}
       />
-    </div>
+    </>
   );
 };
 export default StatesTable;

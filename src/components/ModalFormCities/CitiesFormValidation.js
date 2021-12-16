@@ -7,23 +7,22 @@ const createMaxMinLengthError = (fieldName, max, min) =>
 const CitiesFormValidation = (value) => {
   const errors = {};
 
-  if (isValidLength(value.name, 2, 20)) {
-    errors.name = createMaxMinLengthError("name", 2, 20);
+  if (isValidLength(value.name, 2, 30)) {
+    errors.name = createMaxMinLengthError("name", 2, 30);
   }
-  if (isValidLength(value.state_id, 2, 10)) {
-    errors.state_id = createMaxMinLengthError("state_id", 2, 10);
+  if (isValidLength(value.state_id, 2, 20)) {
+    errors.state_id = createMaxMinLengthError("state_id", 2, 20);
   }
-  if (isValidLength(value.state_code, 2, 10)) {
-    errors.state_code = createMaxMinLengthError("state_code", 2, 20);
+  if (isValidLength(value.state_code, 2, 30)) {
+    errors.state_code = createMaxMinLengthError("state_code", 2, 30);
   }
-  if (isValidLength(value.wikiDataId, 2, 10)) {
-    errors.wikiDataId = createMaxMinLengthError("wikiDataId", 2, 10);
+  if (isValidLength(value.wikiDataId, 2, 30)) {
+    errors.wikiDataId = createMaxMinLengthError("wikiDataId", 2, 30);
   }
-  if (isValidLength(value.country_code, 2, 10)) {
-    errors.country_code = createMaxMinLengthError("country_code", 2, 10);
+  if (isValidLength(value.country_code, 2, 30)) {
+    errors.country_code = createMaxMinLengthError("country_code", 2, 30);
   }
 
-  //console.log(errors, "errors");
   return errors;
 };
 

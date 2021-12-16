@@ -7,20 +7,20 @@ const createMaxMinLengthError = (fieldName, max, min) =>
 const StatesFormValidation = (value) => {
   const errors = {};
 
-  if (isValidLength(value.name, 2, 20)) {
-    errors.name = createMaxMinLengthError("name", 2, 20);
+  if (isValidLength(value.name, 2, 30)) {
+    errors.name = createMaxMinLengthError("name", 2, 30);
   }
-  if (isValidLength(value.country_code, 2, 10)) {
-    errors.country_code = createMaxMinLengthError("country_code", 2, 10);
+  if (isValidLength(value.country_code, 2, 20)) {
+    errors.country_code = createMaxMinLengthError("country_code", 2, 20);
   }
-  if (isValidLength(value.state_code, 2, 10)) {
+  if (isValidLength(value.state_code, 2, 20)) {
     errors.state_code = createMaxMinLengthError("state_code", 2, 20);
   }
-  if (isValidLength(value.latitude, 2, 10)) {
-    errors.latitude = createMaxMinLengthError("latitude", 2, 10);
+  if (isValidLength(value.latitude, 2, 20)) {
+    errors.latitude = createMaxMinLengthError("latitude", 2, 20);
   }
-  if (isValidLength(value.longitude, 2, 10)) {
-    errors.longitude = createMaxMinLengthError("longitude", 2, 10);
+  if (isValidLength(value.longitude, 2, 20)) {
+    errors.longitude = createMaxMinLengthError("longitude", 2, 20);
   }
 
   //console.log(errors, "errors");

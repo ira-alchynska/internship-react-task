@@ -3,8 +3,9 @@ import Table from "../Table/Table";
 import Modal from "../Modal/Modal";
 import Form from "../ModalFormCountries/CountriesForm";
 import CountriesSelectors from "../../redux/countries/selectors";
+
 import { useDispatch, useSelector } from "react-redux";
-import { setModalOpen } from "../../redux/countries/actions";
+
 import {
   fetchCountries,
   setFilterValue,

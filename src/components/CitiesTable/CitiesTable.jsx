@@ -3,6 +3,7 @@ import Table from "../Table/Table";
 import Modal from "../Modal/Modal";
 import ModalFormCities from "../ModalFormCities/ModalFormCities";
 import CitiesSelectors from "../../redux/cities/citiesSelectors";
+
 import { useSelector, useDispatch } from "react-redux";
 
 import {
@@ -25,6 +26,7 @@ const StatesTable = () => {
   const sortColumnOrder = useSelector(
     CitiesSelectors.selectSortedColumnsCities
   );
+ 
 
   const onPageChange = (page) => {
     dispatch(fetchCities(page));
@@ -47,7 +49,7 @@ const StatesTable = () => {
   };
 
   return (
-    <div className="table">
+    <>
       <Modal Form={ModalFormCities} />
       <Table
         onPageChange={onPageChange}
@@ -63,7 +65,7 @@ const StatesTable = () => {
         hiddenColumns={hiddenColumns}
         sortColumnOrder={sortColumnOrder}
       />
-    </div>
+    </>
   );
 };
 export default StatesTable;

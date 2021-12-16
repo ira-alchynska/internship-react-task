@@ -7,19 +7,19 @@ const createMaxMinLengthError = (fieldName, max, min) =>
 const formValidation = (value) => {
   const errors = {};
 
-  if (isValidLength(value.name, 2, 20)) {
-    errors.name = createMaxMinLengthError("name", 2, 20);
+  if (isValidLength(value.name, 2, 30)) {
+    errors.name = createMaxMinLengthError("name", 2, 30);
   }
-  if (isValidLength(value.iso3, 2, 10)) {
-    errors.iso3 = createMaxMinLengthError("iso3", 2, 10);
+  if (isValidLength(value.iso3, 2, 20)) {
+    errors.iso3 = createMaxMinLengthError("iso3", 2, 20);
   }
-  if (isValidLength(value.capital, 2, 10)) {
-    errors.capital = createMaxMinLengthError("capital", 2, 20);
+  if (isValidLength(value.capital, 2, 30)) {
+    errors.capital = createMaxMinLengthError("capital", 2, 30);
   }
-  if (isValidLength(value.currency, 2, 10)) {
-    errors.currency = createMaxMinLengthError("currency", 2, 10);
+  if (isValidLength(value.currency, 2, 30)) {
+    errors.currency = createMaxMinLengthError("currency", 2, 30);
   }
-  if (isValidLength(value.phone_code, 2, 10)) {
+  if (isValidLength(value.phone_code, 2, 20)) {
     errors.phone_code = "Country phone_code should not be blank";
   }
 

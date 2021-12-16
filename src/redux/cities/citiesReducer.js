@@ -11,19 +11,19 @@ import {
   RESET_CITIES,
 } from "./citiesTypes.js";
 
-const hiddenColumns = localStorage.getItem("hiddenColumns");
-const filterValue = localStorage.getItem("filterValue");
-const sortColumnOrder = localStorage.getItem("sortColumnOrder");
+const hiddenColumnsCities = localStorage.getItem("hiddenColumns");
+const filterValueCities = localStorage.getItem("filterValue");
+const sortColumnOrderCities = localStorage.getItem("sortColumnOrder");
 
 const initialState = {
   headerData: CitiesColumns,
-  filterValue: JSON.parse(filterValue) || "",
-  hiddenColumns: JSON.parse(hiddenColumns) || [],
+  filterValue: JSON.parse(filterValueCities) || "",
+  hiddenColumns: JSON.parse(hiddenColumnsCities) || [],
   cities: [],
   loading: false,
   fetched: false,
   error: null,
-  sortColumnOrder: JSON.parse(sortColumnOrder) || {
+  sortColumnOrder: JSON.parse(sortColumnOrderCities) || {
     order: "asc",
     accessor: null,
   },

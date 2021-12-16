@@ -14,8 +14,6 @@ const selectFilteredCountries = (state) => {
 const selectHiddenColumns = (state) => state.country.hiddenColumns;
 const selectSortedColumns = (state) => state.country.sortColumnOrder;
 const selectQuery = (state) => state.country.query;
-const selectIsModalOpen = (state) => state.country.isModalOpen;
-const selectModalData = (state) => state.country.modalData;
 
 const CountriesSelectors = {
   selectCountriesData,
@@ -27,8 +25,6 @@ const CountriesSelectors = {
   selectHiddenColumns,
   selectSortedColumns,
   selectQuery,
-  selectIsModalOpen,
-  selectModalData,
 };
 
 export default CountriesSelectors;

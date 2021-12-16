@@ -1,13 +1,18 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { setModalOpen, setModalData } from "../../redux/countries/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { setModalOpen, setModalData } from "../../redux/modal/modalActions";
+import AuthSelectors from "../../redux/auth/authSelectors";
 
 const TableBody = ({ countriesData, columns }) => {
   const dispatch = useDispatch();
-
+  const isLogIn = useSelector(AuthSelectors.selectIsAuthenticated);
   const onRowClick = (country) => {
-    dispatch(setModalOpen());
-    dispatch(setModalData(country));
+    if (!isLogIn) {
+      return;
+    } else {
+      dispatch(setModalOpen());
+      dispatch(setModalData(country));
+    }
   };
   return (
     <div className="table-body">

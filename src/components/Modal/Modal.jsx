@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setModalOpen } from "../../redux/countries/actions";
-import CountriesSelectors from "../../redux/countries/selectors";
+import { setModalOpen } from "../../redux/modal/modalActions";
+import ModalSelectors from "../../redux/modal/modalSelectors";
 import { createPortal } from "react-dom";
 import Button from "../Button/Button";
 import Images from "../../images";
@@ -11,8 +11,8 @@ const modalRoot = document.querySelector("#modal-root");
 
 export default function Modal({ Form }) {
   const dispatch = useDispatch();
-  const isModalOpen = useSelector(CountriesSelectors.selectIsModalOpen);
-  const modalData = useSelector(CountriesSelectors.selectModalData);
+  const isModalOpen = useSelector(ModalSelectors.selectIsModalOpen);
+  const modalData = useSelector(ModalSelectors.selectModalData);
 
   const onClose = () => {
     dispatch(setModalOpen());

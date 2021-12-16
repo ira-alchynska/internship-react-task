@@ -11,19 +11,19 @@ import {
   SET_FILTER_VALUE_STATES,
 } from "./types.js";
 
-const hiddenColumns = localStorage.getItem("hiddenColumns");
-const filterValue = localStorage.getItem("filterValue");
-const sortColumnOrder = localStorage.getItem("sortColumnOrder");
+const hiddenColumnsStates = localStorage.getItem("hiddenColumns");
+const filterValueStates = localStorage.getItem("filterValue");
+const sortColumnOrderStates = localStorage.getItem("sortColumnOrder");
 
 const initialState = {
   headerData: columnsStates,
-  filterValue: JSON.parse(filterValue) || "",
-  hiddenColumns: JSON.parse(hiddenColumns) || [],
+  filterValue: JSON.parse(filterValueStates) || "",
+  hiddenColumns: JSON.parse(hiddenColumnsStates) || [],
   states: [],
   loading: false,
   fetched: false,
   error: null,
-  sortColumnOrder: JSON.parse(sortColumnOrder) || {
+  sortColumnOrder: JSON.parse(sortColumnOrderStates) || {
     order: "asc",
     accessor: null,
   },

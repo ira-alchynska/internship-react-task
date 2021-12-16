@@ -31,8 +31,7 @@ const initialState = {
     accessor: null,
   },
   query: 5,
-  isModalOpen: false,
-  modalData: null,
+
   formErrors: {},
 };
 
@@ -91,17 +90,6 @@ export const countryReducer = (state = initialState, action) => {
       return {
         ...state,
         formErrors: action.payload,
-      };
-    case SET_MODAL_OPEN:
-      return {
-        ...state,
-        isModalOpen: !state.isModalOpen,
-      };
-
-    case SET_MODAL_DATA:
-      return {
-        ...state,
-        modalData: action.payload,
       };
 
     default:

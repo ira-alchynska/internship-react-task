@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { countryReducer } from "./countries/reducer";
-
+import { modalReducer } from "./modal/modalReducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import { statesReducer } from "./states/statesReducer";
@@ -12,6 +12,7 @@ const rootReducer = combineReducers({
   state: statesReducer,
   city: citiesReducer,
   auth: authReducer,
+  modal: modalReducer,
 });
 
 const logger = (store) => (next) => (action) => {
@@ -43,28 +44,29 @@ store.subscribe(() => {
     "sortColumnOrder",
     JSON.stringify(tempStore.country.sortColumnOrder)
   );
-  // localStorage.setItem(
-  //   "hiddenColumnsStates",
-  //   JSON.stringify(tempStore.state.hiddenColumnsStates)
-  // );
-  // localStorage.setItem(
-  //   "filterValueStates",
-  //   JSON.stringify(tempStore.state.filterValueStates)
-  // );
-  // localStorage.setItem(
-  //   "sortColumnOrderStates",
-  //   JSON.stringify(tempStore.state.sortColumnOrderStates)
-  // );
-  // localStorage.setItem(
-  //   "hiddenColumns",
-  //   JSON.stringify(tempStore.city.hiddenColumns)
-  // );
-  // localStorage.setItem(
-  //   "sortColumn",
-  //   JSON.stringify(tempStore.city.sortColumnOrder)
-  // );
-  // localStorage.setItem(
-  //   "filterValue",
-  //   JSON.stringify(tempStore.city.filterValue)
-  // );
+  localStorage.setItem(
+    "hiddenColumnsStates",
+    JSON.stringify(tempStore.state.hiddenColumns)
+  );
+  localStorage.setItem(
+    "filterValueStates",
+    JSON.stringify(tempStore.state.filterValue)
+  );
+  localStorage.setItem(
+    "sortColumnOrderStates",
+    JSON.stringify(tempStore.state.sortColumnOrder)
+  );
+  localStorage.setItem(
+    "hiddenColumnsCities",
+    JSON.stringify(tempStore.city.hiddenColumns)
+  );
+  localStorage.setItem(
+    "sortColumnOrderCities",
+    JSON.stringify(tempStore.city.sortColumnOrder)
+  );
+  localStorage.setItem(
+    "filterValueCities",
+    JSON.stringify(tempStore.city.filterValue)
+  );
+  localStorage.setItem("isLogin", JSON.stringify(tempStore.auth.userId));
 });

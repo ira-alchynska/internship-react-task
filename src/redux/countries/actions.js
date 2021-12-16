@@ -74,19 +74,6 @@ export const resetCountries = () => {
   };
 };
 
-export const setModalOpen = () => {
-  return {
-    type: SET_MODAL_OPEN,
-  };
-};
-
-export const setModalData = (payload) => {
-  return {
-    type: SET_MODAL_DATA,
-    payload,
-  };
-};
-
 export const fetchCountries = (page) => async (dispatch, getState) => {
   dispatch(setCountriesRequest());
   dispatch(isLoader());
