@@ -30,7 +30,7 @@ const CountriesTable = () => {
   };
 
   const onFilterChange = (value) => {
-    dispatch(setFilterValue(e.target.value));
+    dispatch(setFilterValue(value));
   };
 
   const onHideColumn = (columnName) => {

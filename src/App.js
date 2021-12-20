@@ -12,6 +12,7 @@ import AuthSelectors from "./redux/auth/authSelectors";
 import { setIsAuthenticated } from "./redux/auth/authActions";
 import { PrivateRoute } from "./components/routes/PrivateRoute.jsx";
 import "./App.css";
+import CountryCardList from "./components/CountryCard/CountryCardList.jsx";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -44,9 +45,9 @@ const App = () => {
           <NavLink to="/states" className="NavLink" activeClassName="active">
             States
           </NavLink>
-          {/* <NavLink to="/card" className="NavLink" activeClassName="active">
+          <NavLink to="/card" className="NavLink" activeClassName="active">
             CountryCard
-          </NavLink> */}
+          </NavLink>
           <NavLink to="/login" className="NavLink" activeClassName="active">
             Login
           </NavLink>
@@ -63,6 +64,7 @@ const App = () => {
             }
           />
           <Route path="states" element={<StatesTablePage />} />
+          <Route path="card" element={<CountryCardList />} />
           <Route path="login" element={<LoginPage />} />
         </Routes>
       </div>

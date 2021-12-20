@@ -88,6 +88,7 @@ module.exports = (env = {}) => {
     // server that provides live reloading used for development
     devServer: {
       open: true,
+      historyApiFallback: true,
     },
     resolve: {
       extensions: [".js", ".jsx"],

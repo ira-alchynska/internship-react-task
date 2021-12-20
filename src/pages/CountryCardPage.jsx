@@ -1,7 +1,11 @@
 import React from "react";
-
+import CountryCardList from "../components/CountryCard/CountryCardList";
 const CountryCardPage = () => {
-  return <>{/* <CountryCard /> */}</>;
+  return (
+    <>
+      <CountryCardList />
+    </>
+  );
 };
 
 export default CountryCardPage;
