@@ -82,7 +82,7 @@ const Form = ({ currentItem }) => {
     dispatch(resetCountries());
     dispatch(fetchCountries());
 
-    console.log("state", formValues);
+    // console.log("state", formValues);
   };
 
   return (

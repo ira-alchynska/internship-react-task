@@ -14,7 +14,6 @@ import {
 } from "../../redux/cities/citiesActions";
 
 const StatesTable = () => {
-  console.log(fetchCities());
   const dispatch = useDispatch();
 
   const isLoading = useSelector(CitiesSelectors.selectIsLoadingCities);
@@ -26,7 +25,6 @@ const StatesTable = () => {
   const sortColumnOrder = useSelector(
     CitiesSelectors.selectSortedColumnsCities
   );
- 
 
   const onPageChange = (page) => {
     dispatch(fetchCities(page));

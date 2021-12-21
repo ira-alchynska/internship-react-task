@@ -3,8 +3,10 @@ const selectIsLoading = (state) => state.country.loading;
 const selectError = (state) => state.country.error;
 const selectHeaderData = (state) => state.country.headerData;
 const selectFilterValue = (state) => state.country.filterValue;
+
 const selectFilteredCountries = (state) => {
   const countriesData = selectCountriesData(state);
+  // console.log("selector", countriesData);
   const filterValue = selectFilterValue(state);
 
   return countriesData.filter((country) => {

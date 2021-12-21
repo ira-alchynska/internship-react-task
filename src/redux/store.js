@@ -15,16 +15,16 @@ const rootReducer = combineReducers({
   modal: modalReducer,
 });
 
-const logger = (store) => (next) => (action) => {
-  console.log("dispatching", action);
-  let result = next(action);
-  console.log("next state", store.getState());
-  return result;
-};
+// const logger = (store) => (next) => (action) => {
+//   // console.log("dispatching", action);
+//   let result = next(action);
+//   // console.log("next state", store.getState());
+//   return result;
+// };
 
 export const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(thunk, logger))
+  composeWithDevTools(applyMiddleware(thunk))
 );
 
 store.subscribe(() => {
