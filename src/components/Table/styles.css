@@ -1,8 +1,6 @@
 .table {
   display: table;
-  border: 1px solid #dddddd;
-  border-radius: 5px;
-
+  border: 1px solid black;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   width: 1200px;

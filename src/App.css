@@ -1,17 +1,22 @@
 .App {
+  font-family: "Roboto", sans-serif;
   text-align: center;
+  margin: 0;
 }
 .sidebar {
-  justify-content: space-between;
+  /* background-color: lightgrey; */
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
   padding: 20px;
-  width: 1200px;
+  width: 1202px;
+  border: 1px solid black;
+  margin: 0;
 }
 .NavLink {
-  margin-right: 150px;
+  /* margin-right: 150px; */
   font-size: 20px;
-  color: darkgrey;
+  font-weight: 700;
+  color: black;
 }
 .active {
   color: rgb(184, 12, 12);

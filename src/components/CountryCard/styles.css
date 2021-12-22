@@ -1,0 +1,53 @@
+.container {
+  padding: 15px;
+}
+
+.name {
+  display: flex;
+  justify-content: center;
+}
+
+.flag {
+  width: 100%;
+  height: 200px;
+}
+
+.flag-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.flag-item {
+  width: clamp(200px, 33%, 280px);
+  margin-right: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  border: 2px solid black;
+}
+
+.flag-item:hover,
+.flag-item:focus {
+  background-color: lightgrey;
+  border-color: gray;
+  box-shadow: 2px 2px 2px darkgrey;
+}
+.name {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+.capital {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+.flag-input {
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 550px;
+}
