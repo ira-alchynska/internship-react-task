@@ -9,7 +9,6 @@ import TableBody from "./TableBody.jsx";
 import "./styles.css";
 
 const Table = ({
-  onPageChange,
   onFilterChange,
   onHideColumn,
   onShowAll,
@@ -21,12 +20,13 @@ const Table = ({
   filterValue,
   hiddenColumns,
   sortColumnOrder,
+  showMore,
 }) => {
-  const [page, setPage] = useState(1);
-
   useEffect(() => {
-    onPageChange && onPageChange(page);
-  }, [page]);
+    showMore && showMore();
+
+    return () => onFilterChange("");
+  }, []);
 
   const onChangeFilter = (e) => {
     onFilterChange && onFilterChange(e.target.value);
@@ -77,7 +77,7 @@ const Table = ({
   };
 
   const showMoreCountries = () => {
-    setPage(page + 1);
+    showMore && showMore();
   };
 
   const onClickDropDown = (type, columnName) => {
@@ -104,35 +104,39 @@ const Table = ({
   };
   return (
     <>
-      <div className="table">
-        <Toaster />
-        <TableHeader
-          onSortChange={onChangeSort}
-          headerData={headerWithoutFilteredColumns}
-          sortedOrder={sortColumnOrder.order}
-          sortedAccessor={sortColumnOrder.accessor}
-          onClickDropDown={onClickDropDown}
-          sortColumnOrder={sortColumnOrder}
-        />
-        <div className="table-filter-row">
-          <Filter inputValue={filterValue} onChange={onChangeFilter} />
-        </div>
-        {isLoading && <Loader />}
-        {error && <div>Error occurred</div>}
-        {!isLoading && !error && (
-          <TableBody
-            countriesData={sortedCountries}
-            columns={headerWithoutFilteredColumns}
+      <div className="table-wrapper">
+        <div className="table table-striped">
+          <div>
+            <Toaster />
+          </div>
+          <TableHeader
+            onSortChange={onChangeSort}
+            headerData={headerWithoutFilteredColumns}
+            sortedOrder={sortColumnOrder.order}
+            sortedAccessor={sortColumnOrder.accessor}
+            onClickDropDown={onClickDropDown}
+            sortColumnOrder={sortColumnOrder}
           />
-        )}
+          <div className="table-filter-row">
+            <Filter inputValue={filterValue} onChange={onChangeFilter} />
+          </div>
+          {isLoading && <Loader />}
+          {error && <div>Error occurred</div>}
+          {!isLoading && !error && (
+            <TableBody
+              countriesData={sortedCountries}
+              columns={headerWithoutFilteredColumns}
+            />
+          )}
+        </div>
+        <button
+          className="btn-primary btn"
+          type="button"
+          onClick={() => showMoreCountries()}
+        >
+          Load more...
+        </button>
       </div>
-      <button
-        className="btn-primary"
-        type="button"
-        onClick={() => showMoreCountries()}
-      >
-        Load more...
-      </button>
     </>
   );
 };

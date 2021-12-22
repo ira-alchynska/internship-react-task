@@ -10,8 +10,7 @@ import {
   SET_FILTER_VALUE,
   VALIDATE_FORM_ERROR,
   RESET_COUNTRIES,
-  SET_MODAL_OPEN,
-  SET_MODAL_DATA,
+  SET_COUNTRIES_PAGE,
 } from "./types.js";
 
 const hiddenColumns = localStorage.getItem("hiddenColumns");
@@ -33,6 +32,7 @@ const initialState = {
   query: 5,
 
   formErrors: {},
+  page: 1,
 };
 
 export const countryReducer = (state = initialState, action) => {
@@ -90,6 +90,11 @@ export const countryReducer = (state = initialState, action) => {
       return {
         ...state,
         formErrors: action.payload,
+      };
+    case SET_COUNTRIES_PAGE:
+      return {
+        ...state,
+        page: state.page +1,
       };
 
     default:

@@ -9,6 +9,7 @@ import {
   RESET_STATES,
   SET_HEADER_DATA_STATES,
   SET_FILTER_VALUE_STATES,
+  SET_STATES_PAGE,
 } from "./types.js";
 
 const hiddenColumnsStates = localStorage.getItem("hiddenColumns");
@@ -30,6 +31,7 @@ const initialState = {
   query: 5,
   isModalOpen: false,
   modalData: null,
+  page: 1,
 };
 
 export const statesReducer = (state = initialState, action) => {
@@ -82,6 +84,11 @@ export const statesReducer = (state = initialState, action) => {
       return {
         ...state,
         states: [],
+      };
+    case SET_STATES_PAGE:
+      return {
+        ...state,
+        page: state.page + 1,
       };
     default:
       return state;

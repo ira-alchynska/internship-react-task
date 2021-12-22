@@ -7,6 +7,7 @@ import {
   RESET_STATES,
   SET_HEADER_DATA_STATES,
   SET_FILTER_VALUE_STATES,
+  SET_STATES_PAGE,
 } from "./types.js";
 import StatesSelectors from "./selectors.js";
 import { getStates } from "../../api/states.js";
@@ -68,6 +69,12 @@ export const validationFormError = (payload) => {
 export const resetStates = () => {
   return {
     type: RESET_STATES,
+  };
+};
+
+export const setStatesPage = () => {
+  return {
+    type: SET_STATES_PAGE,
   };
 };
 

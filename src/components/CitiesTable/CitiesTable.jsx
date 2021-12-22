@@ -11,7 +11,9 @@ import {
   setCitiesFilterValue,
   setCitiesHiddenColumns,
   setSortedCities,
+  setCitiesPage,
 } from "../../redux/cities/citiesActions";
+import CountriesSelectors from "../../redux/countries/selectors";
 
 const StatesTable = () => {
   const dispatch = useDispatch();
@@ -26,12 +28,10 @@ const StatesTable = () => {
     CitiesSelectors.selectSortedColumnsCities
   );
 
-  const onPageChange = (page) => {
-    dispatch(fetchCities(page));
-  };
+  const onShowMore = () => dispatch(fetchCities());
 
   const onFilterChange = (value) => {
-    dispatch(setCitiesFilterValue(e.target.value));
+    dispatch(setCitiesFilterValue(value));
   };
 
   const onHideColumn = (columnName) => {
@@ -50,7 +50,6 @@ const StatesTable = () => {
     <>
       <Modal Form={ModalFormCities} />
       <Table
-        onPageChange={onPageChange}
         onFilterChange={onFilterChange}
         onHideColumn={onHideColumn}
         onSortChange={onSortChange}
@@ -62,6 +61,7 @@ const StatesTable = () => {
         filteredCountries={filteredCountries}
         hiddenColumns={hiddenColumns}
         sortColumnOrder={sortColumnOrder}
+        showMore={onShowMore}
       />
     </>
   );

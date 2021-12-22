@@ -1,8 +1,12 @@
 .App {
   font-family: "Roboto", sans-serif;
   text-align: center;
-  margin: 0;
+  margin: auto;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: 400;
 }
+
 .sidebar {
   /* background-color: lightgrey; */
   display: flex;
@@ -19,5 +23,12 @@
   color: black;
 }
 .active {
-  color: rgb(184, 12, 12);
+  color: #084fb9;
+}
+
+.logout-btn {
+  color: black;
+  background-color: #084fb9;
+  width: 100px;
+  border-radius: 3px;
 }

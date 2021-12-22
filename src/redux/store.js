@@ -68,5 +68,8 @@ store.subscribe(() => {
     "filterValueCities",
     JSON.stringify(tempStore.city.filterValue)
   );
-  localStorage.setItem("isLogin", JSON.stringify(tempStore.auth.userId));
+  localStorage.setItem(
+    "isLogin",
+    JSON.stringify(tempStore.auth.isAuthenticated)
+  );
 });

@@ -19,13 +19,14 @@ const App = () => {
   const isLogIn = useSelector(AuthSelectors.selectIsAuthenticated);
 
   useEffect(() => {
-    if (localStorage.getItem("userId")) {
+    if (localStorage.getItem("isLogin") === "true") {
       dispatch(setIsAuthenticated(true));
     }
-  });
+  }, []);
 
   return (
     <>
+      <div className="main-container"></div>
       <div className="App">
         <nav className=" sidebar">
           <NavLink
@@ -48,9 +49,19 @@ const App = () => {
           <NavLink to="/card" className="NavLink" activeClassName="active">
             CountryCard
           </NavLink>
-          <NavLink to="/login" className="NavLink" activeClassName="active">
-            Login
-          </NavLink>
+          {!isLogIn && (
+            <NavLink to="/login" className="NavLink" activeClassName="active">
+              Login
+            </NavLink>
+          )}
+          {isLogIn && (
+            <button
+              className="logout-btn"
+              onClick={() => dispatch(setIsAuthenticated(false))}
+            >
+              Logout
+            </button>
+          )}
         </nav>
 
         <Routes>
@@ -65,7 +76,7 @@ const App = () => {
           />
           <Route path="states" element={<StatesTablePage />} />
           <Route path="card" element={<CountryCardList />} />
-          <Route path="login" element={<LoginPage />} />
+          {!isLogIn && <Route path="login" element={<LoginPage />} />}
         </Routes>
       </div>
     </>

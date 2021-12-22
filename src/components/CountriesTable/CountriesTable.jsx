@@ -1,17 +1,16 @@
 import React from "react";
-import Table from "../Table/Table";
-import Modal from "../Modal/Modal";
-import Form from "../ModalFormCountries/CountriesForm";
 import CountriesSelectors from "../../redux/countries/selectors";
-
 import { useDispatch, useSelector } from "react-redux";
-
 import {
   fetchCountries,
   setFilterValue,
   setHiddenColumns,
   setSortedCountries,
+  setCountriesPage,
 } from "../../redux/countries/actions";
+import Table from "../Table/Table";
+import Modal from "../Modal/Modal";
+import Form from "../ModalFormCountries/CountriesForm";
 
 const CountriesTable = () => {
   const dispatch = useDispatch();
@@ -25,9 +24,7 @@ const CountriesTable = () => {
   const hiddenColumns = useSelector(CountriesSelectors.selectHiddenColumns);
   const sortColumnOrder = useSelector(CountriesSelectors.selectSortedColumns);
 
-  const onPageChange = (page) => {
-    dispatch(fetchCountries(page));
-  };
+  const onShowMore = () => dispatch(fetchCountries());
 
   const onFilterChange = (value) => {
     dispatch(setFilterValue(value));
@@ -50,7 +47,6 @@ const CountriesTable = () => {
       <Modal Form={Form} />
 
       <Table
-        onPageChange={onPageChange}
         onFilterChange={onFilterChange}
         onHideColumn={onHideColumn}
         onSortChange={onSortChange}
@@ -62,6 +58,7 @@ const CountriesTable = () => {
         filteredCountries={filteredCountries}
         hiddenColumns={hiddenColumns}
         sortColumnOrder={sortColumnOrder}
+        showMore={onShowMore}
       />
     </>
   );

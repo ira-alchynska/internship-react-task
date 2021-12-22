@@ -9,6 +9,7 @@ import {
   SET_HEADER_DATA_CITIES,
   SET_FILTER_VALUE_CITIES,
   RESET_CITIES,
+  SET_CITIES_PAGE,
 } from "./citiesTypes.js";
 
 const hiddenColumnsCities = localStorage.getItem("hiddenColumns");
@@ -30,6 +31,7 @@ const initialState = {
   query: 5,
   isModalOpen: false,
   modalData: null,
+  page: 1,
 };
 
 export const citiesReducer = (state = initialState, action) => {
@@ -82,6 +84,11 @@ export const citiesReducer = (state = initialState, action) => {
       return {
         ...state,
         cities: [],
+      };
+    case SET_CITIES_PAGE:
+      return {
+        ...state,
+        page: state.page + 1,
       };
     default:
       return state;

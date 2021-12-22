@@ -12,7 +12,7 @@ const selectFilteredStates = (state) => {
 };
 const selectHiddenColumnsStates = (state) => state.state.hiddenColumns;
 const selectSortedColumnsStates = (state) => state.state.sortColumnOrder;
-const selectQueryStates = (state) => state.state.query;
+const selectStatesPage = (state) => state.state.page;
 
 const StatesSelectors = {
   selectStatesData,
@@ -23,7 +23,7 @@ const StatesSelectors = {
   selectFilteredStates,
   selectHiddenColumnsStates,
   selectSortedColumnsStates,
-  selectQueryStates,
+  selectStatesPage,
 };
 
 export default StatesSelectors;

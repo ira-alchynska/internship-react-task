@@ -2,9 +2,9 @@
   "countries": [
     {
       "id": 1,
-      "flag": "/flags/afganistan.png",
       "name": "Afghanistan",
-      "iso3": "AFG",
+      "flag": "/flags/afghanistan.png",
+      "iso3": "ALB",
       "capital": "Kabul",
       "currency": "AFN",
       "phone_code": "93"
@@ -98,7 +98,7 @@
     {
       "id": 4,
       "name": "Algeria",
-      "flag": "/flags/united.png",
+      "flag": "/flags/algeria.png",
       "iso3": "DZA",
       "iso2": "DZ",
       "numeric_code": "012",
@@ -183,6 +183,7 @@
     {
       "id": 6,
       "name": "Andorra",
+      "flags": "/flags/andorra.png",
       "iso3": "AND",
       "iso2": "AD",
       "numeric_code": "020",
@@ -225,6 +226,7 @@
     {
       "id": 7,
       "name": "Angola",
+      "flag": "/flags/angola.png",
       "iso3": "AGO",
       "iso2": "AO",
       "numeric_code": "024",
@@ -9938,7 +9940,6 @@
     {
       "id": 212,
       "name": "Swaziland",
-      
       "iso3": "SWZ",
       "iso2": "SZ",
       "numeric_code": "748",
@@ -60651,11 +60652,8 @@
       "name": "Ḩukūmatī Dahanah-ye Ghōrī",
       "state_id": 3875,
       "state_code": "BGL",
-      "country_id": 1,
-      "country_code": "AF",
-      "latitude": "35.90617000",
-      "longitude": "68.48869000",
-      "wikiDataId": "Q5194960"
+      "wikiDataId": "Q5194960",
+      "country_code": "AF"
     },
     {
       "id": 101,
@@ -60822,7 +60820,6 @@
       "longitude": "68.42096000",
       "wikiDataId": "Q173731"
     },
-   
     {
       "id": 31353,
       "name": "Hassi Messaoud",
@@ -113381,7 +113378,5 @@
       "longitude": "147.85300000",
       "wikiDataId": "Q3908460"
     }
-   
-    
   ]
 }

@@ -8,8 +8,7 @@ import {
   SET_HIDE_COLUMNS,
   VALIDATE_FORM_ERROR,
   RESET_COUNTRIES,
-  SET_MODAL_OPEN,
-  SET_MODAL_DATA,
+  SET_COUNTRIES_PAGE,
 } from "./types.js";
 import CountriesSelectors from "./selectors.js";
 import { getCountries } from "../../api/countries";
@@ -74,10 +73,17 @@ export const resetCountries = () => {
   };
 };
 
-export const fetchCountries = (page) => async (dispatch, getState) => {
+export const incrementCountriesPage = () => {
+  return {
+    type: SET_COUNTRIES_PAGE,
+  };
+};
+
+export const fetchCountries = () => async (dispatch, getState) => {
   dispatch(setCountriesRequest());
   dispatch(isLoader());
   try {
+    const page = CountriesSelectors.selectCountriesPage(getState());
     const data = await getCountries(page);
     const countries = CountriesSelectors.selectCountriesData(getState());
     if (page === 1) {
@@ -85,6 +91,7 @@ export const fetchCountries = (page) => async (dispatch, getState) => {
     } else {
       dispatch(setCountriesSuccess([...countries, ...data]));
     }
+    dispatch(incrementCountriesPage());
   } catch (error) {
     dispatch(setCountriesError(error.message));
   }

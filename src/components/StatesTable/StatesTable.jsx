@@ -1,22 +1,19 @@
 import React from "react";
-import Table from "../Table/Table";
-import Modal from "../Modal/Modal";
-import ModalFormStates from "../ModalFormStates/ModalFormStates";
-import StatesSelectors from "../../redux/states/selectors";
-
 import { useSelector, useDispatch } from "react-redux";
-
 import {
   fetchStates,
   setFilterValueStates,
   setHiddenColumnsStates,
   setSortedStates,
+  setStatesPage,
 } from "../../redux/states/actions";
+import StatesSelectors from "../../redux/states/selectors";
+import Table from "../Table/Table";
+import Modal from "../Modal/Modal";
+import ModalFormStates from "../ModalFormStates/ModalFormStates";
 
 const StatesTable = () => {
-  console.log(fetchStates());
   const dispatch = useDispatch();
-
   const isLoading = useSelector(StatesSelectors.selectIsLoadingStates);
   const error = useSelector(StatesSelectors.selectErrorStats);
   const headerData = useSelector(StatesSelectors.selectHeaderDataStates);
@@ -27,12 +24,12 @@ const StatesTable = () => {
     StatesSelectors.selectSortedColumnsStates
   );
 
-  const onPageChange = (page) => {
-    dispatch(fetchStates(page));
+  const onShowMore = () => {
+    dispatch(fetchStates());
   };
 
   const onFilterChange = (value) => {
-    dispatch(setFilterValueStates(e.target.value));
+    dispatch(setFilterValueStates(value));
   };
 
   const onHideColumn = (columnName) => {
@@ -51,7 +48,6 @@ const StatesTable = () => {
     <>
       <Modal Form={ModalFormStates} />
       <Table
-        onPageChange={onPageChange}
         onFilterChange={onFilterChange}
         onHideColumn={onHideColumn}
         onSortChange={onSortChange}
@@ -63,6 +59,7 @@ const StatesTable = () => {
         filteredCountries={filteredCountries}
         hiddenColumns={hiddenColumns}
         sortColumnOrder={sortColumnOrder}
+        showMore={onShowMore}
       />
     </>
   );

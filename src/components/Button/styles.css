@@ -17,7 +17,8 @@
 }
 
 .btn-img {
-  color: rgb(68, 65, 65);
+  color: black;
+  margin-bottom: 5px;
   font-size: 15px;
   width: 15px;
   height: 15px;
@@ -25,7 +26,7 @@
 }
 
 .fa-ellipsis-vertical {
-  color: rgb(68, 65, 65);
+  color: black;
   font-size: 15px;
   width: 15px;
   height: 15px;
@@ -43,12 +44,5 @@
 }
 
 .btn-primary {
-  margin-top: 10px;
-  display: block;
   margin-left: 500px;
-  border-radius: 2px;
-  background: rgb(160, 215, 236);
-  width: 200px;
-  height: 30px;
-  text-align: center;
 }

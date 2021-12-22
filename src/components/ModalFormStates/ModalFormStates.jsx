@@ -98,7 +98,9 @@ const FormStates = ({ currentItem }) => {
           name="country_code"
           placeholder="Edit country_code"
           value={formValues.country_code}
-          className="input-form"
+          className={cx("input-form", {
+            "error-input": errors.country_code,
+          })}
           focused={focused.toString()}
         />
 
