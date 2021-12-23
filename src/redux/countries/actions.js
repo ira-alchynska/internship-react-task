@@ -89,6 +89,7 @@ export const fetchCountries = () => async (dispatch, getState) => {
     if (page === 1) {
       dispatch(setCountriesSuccess(data));
     } else {
+      
       dispatch(setCountriesSuccess([...countries, ...data]));
     }
     dispatch(incrementCountriesPage());

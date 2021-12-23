@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CountriesSelectors from "../../redux/countries/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -6,7 +6,6 @@ import {
   setFilterValue,
   setHiddenColumns,
   setSortedCountries,
-  setCountriesPage,
 } from "../../redux/countries/actions";
 import Table from "../Table/Table";
 import Modal from "../Modal/Modal";
@@ -14,6 +13,7 @@ import Form from "../ModalFormCountries/CountriesForm";
 
 const CountriesTable = () => {
   const dispatch = useDispatch();
+  const countriesData = useSelector(CountriesSelectors.selectFilteredCountries);
   const isLoading = useSelector(CountriesSelectors.selectIsLoading);
   const error = useSelector(CountriesSelectors.selectError);
   const headerData = useSelector(CountriesSelectors.selectHeaderData);
@@ -25,6 +25,14 @@ const CountriesTable = () => {
   const sortColumnOrder = useSelector(CountriesSelectors.selectSortedColumns);
 
   const onShowMore = () => dispatch(fetchCountries());
+
+  // useEffect(() => {
+  //   if (!countriesData.length) {
+  //     onShowMore();
+  //   }
+
+  //
+  // }, []);
 
   const onFilterChange = (value) => {
     dispatch(setFilterValue(value));

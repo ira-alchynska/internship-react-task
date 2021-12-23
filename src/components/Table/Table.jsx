@@ -24,7 +24,7 @@ const Table = ({
 }) => {
   useEffect(() => {
     showMore && showMore();
-
+    console.log("initialloading");
     return () => onFilterChange("");
   }, []);
 

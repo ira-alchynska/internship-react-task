@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CountriesSelectors from "../../redux/countries/selectors.js";
 import {
   setFilterValue,
-  setCountriesPage,
+ 
 } from "../../redux/countries/actions";
 import { fetchCountries } from "../../redux/countries/actions.js";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,7 +13,7 @@ const CountryCardList = () => {
 
   const countriesData = useSelector(CountriesSelectors.selectFilteredCountries);
   const filterValue = useSelector(CountriesSelectors.selectFilterValue);
-  //const page = useSelector(CountriesSelectors.selectCountriesPage);
+
 
   const onShowMore = () => {
     dispatch(fetchCountries());

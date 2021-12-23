@@ -29,8 +29,6 @@ const initialState = {
     order: "asc",
     accessor: null,
   },
-  query: 5,
-
   formErrors: {},
   page: 1,
 };
@@ -94,7 +92,7 @@ export const countryReducer = (state = initialState, action) => {
     case SET_COUNTRIES_PAGE:
       return {
         ...state,
-        page: state.page +1,
+        page: state.page + 1,
       };
 
     default:

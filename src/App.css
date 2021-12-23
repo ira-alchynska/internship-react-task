@@ -8,7 +8,6 @@
 }
 
 .sidebar {
-  /* background-color: lightgrey; */
   display: flex;
   justify-content: space-between;
   padding: 20px;
@@ -17,7 +16,6 @@
   margin: 0;
 }
 .NavLink {
-  /* margin-right: 150px; */
   font-size: 20px;
   font-weight: 700;
   color: black;
