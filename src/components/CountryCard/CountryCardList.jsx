@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import CountriesSelectors from "../../redux/countries/selectors.js";
+import CountriesSelectors from "../../redux/countries/selectors";
 import {
   setFilterValue,
   incrementCountriesPage,
 } from "../../redux/countries/actions";
-import { fetchCountries } from "../../redux/countries/actions.js";
+import { fetchCountries } from "../../redux/countries/actions";
 import { useSelector, useDispatch } from "react-redux";
 import "./styles.css";
 

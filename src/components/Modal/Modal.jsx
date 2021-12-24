@@ -4,7 +4,7 @@ import { setModalOpen } from "../../redux/modal/modalActions";
 import ModalSelectors from "../../redux/modal/modalSelectors";
 import { createPortal } from "react-dom";
 import Button from "../Button/Button";
-import Images from "../../images";
+import Images from "../../images/index";
 import "./styles.css";
 
 const modalRoot = document.querySelector("#modal-root");

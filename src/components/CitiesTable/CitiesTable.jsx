@@ -10,7 +10,7 @@ import {
   setCitiesHiddenColumns,
   setSortedCities,
   incrementCitiesPage,
-} from "../../redux/cities/citiesActions";
+} from "../../redux/cities/citiesActions.js";
 
 const StatesTable = () => {
   const dispatch = useDispatch();
