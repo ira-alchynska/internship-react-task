@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
-import CountriesSelectors from "../../redux/countries/selectors";
-import {
-  setFilterValue,
-  incrementCountriesPage,
-} from "../../redux/countries/actions";
-import { fetchCountries } from "../../redux/countries/actions";
+import React, { useEffect } from "react";
+import CountriesSelectors from "../../redux/countries/selectors.js";
+import { setFilterValue } from "../../redux/countries/actions.js";
+import { fetchCountries } from "../../redux/countries/actions.js";
 import { useSelector, useDispatch } from "react-redux";
 import "./styles.css";
 
@@ -13,7 +10,6 @@ const CountryCardList = () => {
 
   const countriesData = useSelector(CountriesSelectors.selectFilteredCountries);
   const filterValue = useSelector(CountriesSelectors.selectFilterValue);
-  //const page = useSelector(CountriesSelectors.selectCountriesPage);
 
   const onShowMore = () => {
     dispatch(fetchCountries());

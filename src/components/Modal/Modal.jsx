@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setModalOpen } from "../../redux/modal/modalActions";
-import ModalSelectors from "../../redux/modal/modalSelectors";
+import { setModalOpen } from "../../redux/modal/modalActions.js";
+import ModalSelectors from "../../redux/modal/modalSelectors.js";
 import { createPortal } from "react-dom";
-import Button from "../Button/Button";
+import Button from "../Button/Button.jsx";
 import Images from "../../images/index";
 import "./styles.css";
 
