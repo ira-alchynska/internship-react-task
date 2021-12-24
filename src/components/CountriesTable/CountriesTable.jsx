@@ -7,10 +7,10 @@ import {
   setHiddenColumns,
   setSortedCountries,
   incrementCountriesPage,
-} from "../../redux/countries/actions";
-import Table from "../Table/Table";
-import Modal from "../Modal/Modal";
-import Form from "../ModalFormCountries/CountriesForm";
+} from "../../redux/countries/actions.js";
+import Table from "../Table/Table.jsx";
+import Modal from "../Modal/Modal.jsx";
+import Form from "../ModalFormCountries/CountriesForm.jsx";
 
 const CountriesTable = () => {
   const dispatch = useDispatch();
