@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import cx from "classnames";
 import toast from "react-hot-toast";
-import { putCities } from "../../api/cities";
-import { fetchCities, resetCities } from "../../redux/cities/citiesActions";
-import CitiesFormValidation from "./CitiesFormValidation";
+import { putCities } from "../../api/cities.js";
+import { fetchCities, resetCities } from "../../redux/cities/citiesActions.0js";
+import CitiesFormValidation from "./CitiesFormValidation.js";
 import "./styles.css";
 
 const FormCities = ({ currentItem }) => {

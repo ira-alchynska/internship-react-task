@@ -5,11 +5,14 @@ import cx from "classnames";
 import toast, { Toaster } from "react-hot-toast";
 const notify = () => toast("Here is your toast.");
 
-import Loader from "../../Loader/Loader";
+import Loader from "../../Loader/Loader.jsx";
 
-import { putCountries } from "../../api/countries";
-import { fetchCountries, resetCountries } from "../../redux/countries/actions";
-import formValidation from "./FormValidation";
+import { putCountries } from "../../api/countries.js";
+import {
+  fetchCountries,
+  resetCountries,
+} from "../../redux/countries/actions.js";
+import formValidation from "./FormValidation.js";
 
 import "./styles.css";
 

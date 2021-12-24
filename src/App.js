@@ -1,16 +1,15 @@
-// "server": "json-server  --watch db.json --port 4040",
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-//import { setModalOpen } from "./redux/actions.js";
-import { Routes, Route, NavLink, Navigate } from "react-router-dom";
+
+import { Routes, Route, NavLink } from "react-router-dom";
 
 import CountriesTablePage from "./pages/CountriesTablePage.jsx";
 import StatesTablePage from "./pages/StatesTablePage.jsx";
 import CitiesTablePage from "./pages/CitiesTablePage.jsx";
-//import CountryCardPage from "./pages/CountryCardPage.jsx";
+
 import LoginPage from "./pages/LoginPage.jsx";
-import AuthSelectors from "./redux/auth/authSelectors";
-import { setIsAuthenticated } from "./redux/auth/authActions";
+import AuthSelectors from "./redux/auth/authSelectors.js";
+import { setIsAuthenticated } from "./redux/auth/authActions.js";
 import { PrivateRoute } from "./components/routes/PrivateRoute.jsx";
 import "./App.css";
 import CountryCardList from "./components/CountryCard/CountryCardList.jsx";

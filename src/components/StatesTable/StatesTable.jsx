@@ -6,11 +6,11 @@ import {
   setHiddenColumnsStates,
   setSortedStates,
   incrementStatesPage,
-} from "../../redux/states/actions";
-import StatesSelectors from "../../redux/states/selectors";
-import Table from "../Table/Table";
-import Modal from "../Modal/Modal";
-import ModalFormStates from "../ModalFormStates/ModalFormStates";
+} from "../../redux/states/actions.js";
+import StatesSelectors from "../../redux/states/selectors.js";
+import Table from "../Table/Table.jsx";
+import Modal from "../Modal/Modal.jsx";
+import ModalFormStates from "../ModalFormStates/ModalFormStates.jsx";
 
 const StatesTable = () => {
   const dispatch = useDispatch();

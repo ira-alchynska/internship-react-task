@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import CountriesSelectors from "../../redux/countries/selectors";
+import CountriesSelectors from "../../redux/countries/selectors.js";
 import {
   setFilterValue,
   incrementCountriesPage,
-} from "../../redux/countries/actions";
-import { fetchCountries } from "../../redux/countries/actions";
-import { useSelector, useDispatch } from "react-redux";
+} from "../../redux/countries/actions.js";
+import { fetchCountries } from "../../redux/countries/actions.js";
+import { useSelector, useDispatch } from "react-redux.js";
 import "./styles.css";
 
 const CountryCardList = () => {

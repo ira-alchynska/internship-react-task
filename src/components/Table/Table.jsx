@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
-import Loader from "../../Loader/Loader";
+import Loader from "../../Loader/Loader.jsx";
 
-import Filter from "../Filter/Filter";
-import TableHeader from "./TableHeader";
-import TableBody from "./TableBody";
+import Filter from "../Filter/Filter.jsx";
+import TableHeader from "./TableHeader.jsx";
+import TableBody from "./TableBody.jsx";
 
 import "./styles.css";
 

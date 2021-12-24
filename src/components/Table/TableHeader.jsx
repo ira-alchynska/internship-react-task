@@ -1,8 +1,8 @@
 import React from "react";
 import cx from "classnames";
-import DropDown from "../Dropdown-list/DropDown";
-import Button from "../Button/Button";
-import Images from "../../images";
+import DropDown from "../Dropdown-list/DropDown.jsx";
+import Button from "../Button/Button.jsx";
+import Images from "../../images.js";
 
 const NAME_DROPDOWN_ITEMS = ["ASC", "DESC", "SHOW ALL"];
 const DROPDOWN_ITEMS = [...NAME_DROPDOWN_ITEMS, "HIDE"];

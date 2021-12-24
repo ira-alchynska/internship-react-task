@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setModalOpen, setModalData } from "../../redux/modal/modalActions";
-import AuthSelectors from "../../redux/auth/authSelectors";
+import { setModalOpen, setModalData } from "../../redux/modal/modalActions.js";
+import AuthSelectors from "../../redux/auth/authSelectors.js";
 
 const TableBody = ({ countriesData, columns }) => {
   const dispatch = useDispatch();

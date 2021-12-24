@@ -1,8 +1,8 @@
 import React from "react";
-import Table from "../Table/Table";
-import Modal from "../Modal/Modal";
-import ModalFormCities from "../ModalFormCities/ModalFormCities";
-import CitiesSelectors from "../../redux/cities/citiesSelectors";
+import Table from "../Table/Table.jsx";
+import Modal from "../Modal/Modal.jsx";
+import ModalFormCities from "../ModalFormCities/ModalFormCities.jsx";
+import CitiesSelectors from "../../redux/cities/citiesSelectors.js";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchCities,
@@ -10,7 +10,7 @@ import {
   setCitiesHiddenColumns,
   setSortedCities,
   incrementCitiesPage,
-} from "../../redux/cities/citiesActions";
+} from "../../redux/cities/citiesActions.js";
 
 const StatesTable = () => {
   const dispatch = useDispatch();
