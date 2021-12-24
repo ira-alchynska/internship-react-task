@@ -1,3 +1,4 @@
+// "server": "json-server  --watch db.json --port 4040",
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 //import { setModalOpen } from "./redux/actions.js";

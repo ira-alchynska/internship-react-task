@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:4040";
+const BASE_URL = "http://localhost:8000";
 
 export const getCountries = async (page, limit = 10) => {
   const { data } = await axios.get(
