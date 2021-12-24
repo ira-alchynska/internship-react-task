@@ -1,6 +1,6 @@
 import React from "react";
 import cx from "classnames";
-import DropDown from "../Dropdown-list/DropDown";
+import DropDown from "./Dropdown-list/DropDown";
 import Button from "../Button/Button";
 import Images from "../../images/index";
 
