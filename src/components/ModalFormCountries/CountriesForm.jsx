@@ -5,7 +5,7 @@ import cx from "classnames";
 import toast, { Toaster } from "react-hot-toast";
 const notify = () => toast("Here is your toast.");
 
-import Loader from "../../Loader/Loader.jsx";
+import Loader from "../../Loader/Loader";
 
 import { putCountries } from "../../api/countries";
 import { fetchCountries, resetCountries } from "../../redux/countries/actions";
