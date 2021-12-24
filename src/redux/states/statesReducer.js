@@ -28,7 +28,7 @@ const initialState = {
     order: "asc",
     accessor: null,
   },
-  query: 5,
+
   isModalOpen: false,
   modalData: null,
   page: 1,

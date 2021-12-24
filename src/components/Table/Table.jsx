@@ -21,9 +21,13 @@ const Table = ({
   hiddenColumns,
   sortColumnOrder,
   showMore,
+  initialFetch,
+  data,
 }) => {
   useEffect(() => {
-    showMore && showMore();
+    if (!data.length) {
+      initialFetch && initialFetch();
+    }
 
     return () => onFilterChange("");
   }, []);
@@ -105,10 +109,11 @@ const Table = ({
   return (
     <>
       <div className="table-wrapper">
+        {" "}
+        <div>
+          <Toaster />
+        </div>
         <div className="table table-striped">
-          <div>
-            <Toaster />
-          </div>
           <TableHeader
             onSortChange={onChangeSort}
             headerData={headerWithoutFilteredColumns}

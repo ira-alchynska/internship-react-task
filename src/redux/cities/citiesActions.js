@@ -65,23 +65,24 @@ export const resetCities = () => {
     type: RESET_CITIES,
   };
 };
-export const setCitiesPage = () => {
+export const incrementCitiesPage = () => {
   return {
     type: SET_CITIES_PAGE,
   };
 };
 
-export const fetchCities = (page) => async (dispatch, getState) => {
+export const fetchCities = () => async (dispatch, getState) => {
   dispatch(setCitiesRequest());
   dispatch(isLoader());
   try {
+    const page = CitiesSelectors.selectCitiesPage(getState());
+
     const data = await getCities(page);
     const states = CitiesSelectors.selectCitiesData(getState());
-    if (page === 1) {
-      dispatch(setCitiesSuccess(data));
-    } else {
-      dispatch(setCitiesSuccess([...states, ...data]));
-    }
+
+    dispatch(setCitiesSuccess(data));
+
+    dispatch(setCitiesSuccess([...states, ...data]));
   } catch (error) {
     dispatch(setCitiesError(error.message));
   }

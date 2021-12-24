@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CountriesSelectors from "../../redux/countries/selectors.js";
 import {
   setFilterValue,
-  setCountriesPage,
+  incrementCountriesPage,
 } from "../../redux/countries/actions";
 import { fetchCountries } from "../../redux/countries/actions.js";
 import { useSelector, useDispatch } from "react-redux";

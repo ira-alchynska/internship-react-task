@@ -5,7 +5,7 @@ import {
   setFilterValueStates,
   setHiddenColumnsStates,
   setSortedStates,
-  setStatesPage,
+  incrementStatesPage,
 } from "../../redux/states/actions";
 import StatesSelectors from "../../redux/states/selectors";
 import Table from "../Table/Table";
@@ -14,6 +14,7 @@ import ModalFormStates from "../ModalFormStates/ModalFormStates";
 
 const StatesTable = () => {
   const dispatch = useDispatch();
+  const statesData = useSelector(StatesSelectors.selectStatesData);
   const isLoading = useSelector(StatesSelectors.selectIsLoadingStates);
   const error = useSelector(StatesSelectors.selectErrorStats);
   const headerData = useSelector(StatesSelectors.selectHeaderDataStates);
@@ -24,7 +25,13 @@ const StatesTable = () => {
     StatesSelectors.selectSortedColumnsStates
   );
 
+  const initialFetch = () => {
+    dispatch(fetchStates());
+  };
+
   const onShowMore = () => {
+    dispatch(incrementStatesPage());
+
     dispatch(fetchStates());
   };
 
@@ -60,6 +67,8 @@ const StatesTable = () => {
         hiddenColumns={hiddenColumns}
         sortColumnOrder={sortColumnOrder}
         showMore={onShowMore}
+        initialFetch={initialFetch}
+        data={statesData}
       />
     </>
   );

@@ -1,10 +1,10 @@
 import { SET_IS_AUTHENTICATED } from "./authTypes";
 
-const isLogin = localStorage.getItem("userId");
+const isAuthenticated = localStorage.getItem("isAuthenticated");
 
 const initialState = {
-  isAuthenticated: false,
-  userId: JSON.parse(isLogin) || "userId",
+  isAuthenticated: JSON.parse(isAuthenticated) || false,
+  userId: 1,
 };
 
 export const authReducer = (state = initialState, action) => {

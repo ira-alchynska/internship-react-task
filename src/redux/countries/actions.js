@@ -86,12 +86,10 @@ export const fetchCountries = () => async (dispatch, getState) => {
     const page = CountriesSelectors.selectCountriesPage(getState());
     const data = await getCountries(page);
     const countries = CountriesSelectors.selectCountriesData(getState());
-    if (page === 1) {
-      dispatch(setCountriesSuccess(data));
-    } else {
-      dispatch(setCountriesSuccess([...countries, ...data]));
-    }
-    dispatch(incrementCountriesPage());
+
+    dispatch(setCountriesSuccess(data));
+
+    dispatch(setCountriesSuccess([...countries, ...data]));
   } catch (error) {
     dispatch(setCountriesError(error.message));
   }

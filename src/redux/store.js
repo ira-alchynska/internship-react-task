@@ -69,7 +69,7 @@ store.subscribe(() => {
     JSON.stringify(tempStore.city.filterValue)
   );
   localStorage.setItem(
-    "isLogin",
+    "isAuthenticated",
     JSON.stringify(tempStore.auth.isAuthenticated)
   );
 });

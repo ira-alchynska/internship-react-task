@@ -5,6 +5,7 @@ const selectHeaderDataStates = (state) => state.state.headerData;
 const selectFilterValueStates = (state) => state.state.filterValue;
 const selectFilteredStates = (state) => {
   const StatesData = selectStatesData(state);
+
   const filterValueStates = selectFilterValueStates(state);
   return StatesData.filter((state) => {
     return state.name.toLowerCase().includes(filterValueStates.toLowerCase());

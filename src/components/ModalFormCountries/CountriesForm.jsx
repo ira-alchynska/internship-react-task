@@ -50,7 +50,6 @@ const Form = ({ currentItem }) => {
   const [formValues, setFormValues] = useState(initialValues);
   const [isLoading, setIsLoading] = useState(false);
   const [focused, setFocused] = useState(false);
-  const [hideForm, setHideForm] = useState(true);
 
   const errors = formValidation(formValues);
 

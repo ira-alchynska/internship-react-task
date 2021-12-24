@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setIsAuthenticated } from "../../redux/auth/authActions";
+import formLoginValidation from "./LoginValidation";
 import "./styles.css";
 
 const Login = () => {
@@ -37,6 +39,7 @@ const Login = () => {
       alert("wrong email or password combination");
     }
   };
+
   return (
     <>
       <div className="login-page">
@@ -58,6 +61,7 @@ const Login = () => {
                 onChange={handleEmailChange}
               />
             </div>
+
             <div className="form-group">
               <input
                 type="password"
@@ -69,6 +73,7 @@ const Login = () => {
                 onChange={handlePasswordChange}
               />
             </div>
+
             <button type="submit" className="btn-login">
               Submit
             </button>

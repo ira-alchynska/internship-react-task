@@ -72,23 +72,22 @@ export const resetStates = () => {
   };
 };
 
-export const setStatesPage = () => {
+export const incrementStatesPage = () => {
   return {
     type: SET_STATES_PAGE,
   };
 };
 
-export const fetchStates = (page) => async (dispatch, getState) => {
+export const fetchStates = () => async (dispatch, getState) => {
   dispatch(setStatesRequest());
   dispatch(isLoader());
   try {
+    const page = StatesSelectors.selectStatesPage(getState());
+
     const data = await getStates(page);
     const states = StatesSelectors.selectStatesData(getState());
-    if (page === 1) {
-      dispatch(setStatesSuccess(data));
-    } else {
-      dispatch(setStatesSuccess([...states, ...data]));
-    }
+
+    dispatch(setStatesSuccess([...states, ...data]));
   } catch (error) {
     dispatch(setStatesError(error.message));
   }

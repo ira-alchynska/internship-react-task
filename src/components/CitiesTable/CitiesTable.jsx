@@ -3,21 +3,18 @@ import Table from "../Table/Table";
 import Modal from "../Modal/Modal";
 import ModalFormCities from "../ModalFormCities/ModalFormCities";
 import CitiesSelectors from "../../redux/cities/citiesSelectors";
-
 import { useSelector, useDispatch } from "react-redux";
-
 import {
   fetchCities,
   setCitiesFilterValue,
   setCitiesHiddenColumns,
   setSortedCities,
-  setCitiesPage,
+  incrementCitiesPage,
 } from "../../redux/cities/citiesActions";
-import CountriesSelectors from "../../redux/countries/selectors";
 
 const StatesTable = () => {
   const dispatch = useDispatch();
-
+  const citiesData = useSelector(CitiesSelectors.selectCitiesData);
   const isLoading = useSelector(CitiesSelectors.selectIsLoadingCities);
   const error = useSelector(CitiesSelectors.selectErrorStats);
   const headerData = useSelector(CitiesSelectors.selectHeaderDataCities);
@@ -28,7 +25,14 @@ const StatesTable = () => {
     CitiesSelectors.selectSortedColumnsCities
   );
 
-  const onShowMore = () => dispatch(fetchCities());
+  const initialFetch = () => {
+    dispatch(fetchCities());
+  };
+
+  const onShowMore = () => {
+    dispatch(incrementCitiesPage());
+    dispatch(fetchCities());
+  };
 
   const onFilterChange = (value) => {
     dispatch(setCitiesFilterValue(value));
@@ -62,6 +66,8 @@ const StatesTable = () => {
         hiddenColumns={hiddenColumns}
         sortColumnOrder={sortColumnOrder}
         showMore={onShowMore}
+        initialFetch={initialFetch}
+        data={citiesData}
       />
     </>
   );
