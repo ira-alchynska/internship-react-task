@@ -1,27 +1,30 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import { countryReducer } from "./reducer";
+import { countryReducer } from "./countries/reducer";
+import { modalReducer } from "./modal/modalReducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-import {
-  SET_SORT_COUNTRIES,
-  SET_FILTER_VALUE,
-  SET_HIDE_COLUMNS,
-} from "./types.js";
+import { statesReducer } from "./states/statesReducer";
+import { citiesReducer } from "./cities/citiesReducer";
+import { authReducer } from "./auth/authReducer";
 
 const rootReducer = combineReducers({
   country: countryReducer,
+  state: statesReducer,
+  city: citiesReducer,
+  auth: authReducer,
+  modal: modalReducer,
 });
 
-const logger = (store) => (next) => (action) => {
-  console.log("dispatching", action);
-  let result = next(action);
-  console.log("next state", store.getState());
-  return result;
-};
+// const logger = (store) => (next) => (action) => {
+//   // console.log("dispatching", action);
+//   let result = next(action);
+//   // console.log("next state", store.getState());
+//   return result;
+// };
 
 export const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(thunk, logger))
+  composeWithDevTools(applyMiddleware(thunk))
 );
 
 store.subscribe(() => {
@@ -41,6 +44,32 @@ store.subscribe(() => {
     "sortColumnOrder",
     JSON.stringify(tempStore.country.sortColumnOrder)
   );
+  localStorage.setItem(
+    "hiddenColumnsStates",
+    JSON.stringify(tempStore.state.hiddenColumns)
+  );
+  localStorage.setItem(
+    "filterValueStates",
+    JSON.stringify(tempStore.state.filterValue)
+  );
+  localStorage.setItem(
+    "sortColumnOrderStates",
+    JSON.stringify(tempStore.state.sortColumnOrder)
+  );
+  localStorage.setItem(
+    "hiddenColumnsCities",
+    JSON.stringify(tempStore.city.hiddenColumns)
+  );
+  localStorage.setItem(
+    "sortColumnOrderCities",
+    JSON.stringify(tempStore.city.sortColumnOrder)
+  );
+  localStorage.setItem(
+    "filterValueCities",
+    JSON.stringify(tempStore.city.filterValue)
+  );
+  localStorage.setItem(
+    "isAuthenticated",
+    JSON.stringify(tempStore.auth.isAuthenticated)
+  );
 });
-// const unsubscribe = store.subscribe();
-// unsubscribe();

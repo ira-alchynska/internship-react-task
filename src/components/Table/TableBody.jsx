@@ -1,16 +1,19 @@
-import React, { useState } from "react";
-import Modal from "../Modal/Modal";
-import images from "../../images/index";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setModalOpen, setModalData } from "../../redux/modal/modalActions";
+import AuthSelectors from "../../redux/auth/authSelectors";
 
 const TableBody = ({ countriesData, columns }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalData, setModalData] = useState(null);
-
+  const dispatch = useDispatch();
+  const isLogIn = useSelector(AuthSelectors.selectIsAuthenticated);
   const onRowClick = (country) => {
-    setIsModalOpen(true);
-    setModalData(country);
+    if (!isLogIn) {
+      return;
+    } else {
+      dispatch(setModalOpen());
+      dispatch(setModalData(country));
+    }
   };
-
   return (
     <div className="table-body">
       {countriesData.map((country) => {
@@ -25,7 +28,7 @@ const TableBody = ({ countriesData, columns }) => {
         return (
           <div
             className="table-row"
-            key={country.id}
+            key={id}
             onClick={() => onRowClick(country)}
           >
             {columnsWithData.map((content, index) => (
@@ -36,9 +39,6 @@ const TableBody = ({ countriesData, columns }) => {
           </div>
         );
       })}
-      {isModalOpen && (
-        <Modal currentItem={modalData} onClose={() => setIsModalOpen(false)} />
-      )}
     </div>
   );
 };

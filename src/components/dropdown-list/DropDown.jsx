@@ -18,7 +18,7 @@ const DropDown = ({ onClick, accessor, dropdownItems }) => {
             return (
               <li
                 key={item}
-                className="dropdown-item asc"
+                className="dropdown-item"
                 value={item}
                 onClick={() => {
                   onClick(item, accessor);

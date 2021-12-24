@@ -1,0 +1,59 @@
+.modal-form {
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  border-radius: 3px;
+}
+
+.label-form {
+  margin-bottom: 5px;
+  margin-left: 20px;
+}
+
+.input-form:invalid[focused="true"] {
+  border: 1px solid tomato;
+}
+
+.input-form {
+  margin-left: 20px;
+  padding-left: 5px;
+  margin-bottom: 5px;
+  height: 30px;
+  width: 200px;
+  border: 1px solid gray;
+  outline: none;
+}
+
+.btnEditRow {
+  margin-bottom: 10px;
+  margin-left: 130px;
+  width: 200px;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 3px;
+  margin-top: 20px;
+  display: block;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.error {
+  margin-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  margin-left: 20px;
+  font-size: small;
+  font-weight: 400;
+  font-style: normal;
+  color: tomato;
+}
+
+.input-form {
+  padding: 5px;
+  border-radius: 2px;
+  width: 300px;
+}

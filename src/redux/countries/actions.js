@@ -8,9 +8,11 @@ import {
   SET_HIDE_COLUMNS,
   VALIDATE_FORM_ERROR,
   RESET_COUNTRIES,
+  SET_COUNTRIES_PAGE,
 } from "./types.js";
-import { getCountries } from "../api/countries";
-import isLoader from "../Loader/Loader.jsx";
+import CountriesSelectors from "./selectors.js";
+import { getCountries } from "../../api/countries";
+import isLoader from "../../Loader/Loader.jsx";
 
 export const setCountriesSuccess = (countries) => {
   return {
@@ -71,12 +73,23 @@ export const resetCountries = () => {
   };
 };
 
-export const fetchCountries = (page) => async (dispatch) => {
+export const incrementCountriesPage = () => {
+  return {
+    type: SET_COUNTRIES_PAGE,
+  };
+};
+
+export const fetchCountries = () => async (dispatch, getState) => {
   dispatch(setCountriesRequest());
   dispatch(isLoader());
   try {
+    const page = CountriesSelectors.selectCountriesPage(getState());
     const data = await getCountries(page);
+    const countries = CountriesSelectors.selectCountriesData(getState());
+
     dispatch(setCountriesSuccess(data));
+
+    dispatch(setCountriesSuccess([...countries, ...data]));
   } catch (error) {
     dispatch(setCountriesError(error.message));
   }

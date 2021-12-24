@@ -4,7 +4,7 @@ import "./styles.css";
 const Filter = ({ onChange, inputValue }) => {
   return (
     <div>
-      <label htmlFor="filter">
+      <label htmlFor="filter" className="form-label">
         Search by name
         <input
           type="text"

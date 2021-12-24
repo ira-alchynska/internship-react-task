@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
-    "server": "json-server --delay 300 --watch db.json --port 4080",
+    "server": "json-server  --watch db.json --port 4040",
     "build": "webpack --env mode=production",
     "dev": "webpack --env mode=development",
     "predeploy": "npm run build",
@@ -32,6 +32,7 @@
     "react": "^17.0.2",
     "react-css-modules": "^4.7.11",
     "react-dom": "^17.0.2",
+    "react-hot-toast": "^2.1.1",
     "react-jss": "^10.8.2",
     "react-loader-spinner": "^4.0.0",
     "react-redux": "^7.2.6",
@@ -40,7 +41,8 @@
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

@@ -1,4 +1,4 @@
-import columns from "../data/columns";
+import columns from "../../data/columns";
 
 import {
   FETCH_COUNTRIES_REQUEST,
@@ -8,7 +8,9 @@ import {
   SET_SORT_COUNTRIES,
   SET_HEADER_DATA,
   SET_FILTER_VALUE,
+  VALIDATE_FORM_ERROR,
   RESET_COUNTRIES,
+  SET_COUNTRIES_PAGE,
 } from "./types.js";
 
 const hiddenColumns = localStorage.getItem("hiddenColumns");
@@ -28,6 +30,9 @@ const initialState = {
     accessor: null,
   },
   query: 5,
+
+  formErrors: {},
+  page: 1,
 };
 
 export const countryReducer = (state = initialState, action) => {
@@ -41,7 +46,7 @@ export const countryReducer = (state = initialState, action) => {
     case FETCH_COUNTRIES_SUCCESS:
       return {
         ...state,
-        countries: [...state.countries, ...action.payload],
+        countries: action.payload,
         loading: false,
         fetched: true,
       };
@@ -80,6 +85,16 @@ export const countryReducer = (state = initialState, action) => {
       return {
         ...state,
         countries: [],
+      };
+    case VALIDATE_FORM_ERROR:
+      return {
+        ...state,
+        formErrors: action.payload,
+      };
+    case SET_COUNTRIES_PAGE:
+      return {
+        ...state,
+        page: state.page +1,
       };
 
     default:
