@@ -7,12 +7,9 @@ const notify = () => toast("Here is your toast.");
 
 import Loader from "../../Loader/Loader.jsx";
 
-import { putCountries } from "../../api/countries.js";
-import {
-  fetchCountries,
-  resetCountries,
-} from "../../redux/countries/actions.js";
-import formValidation from "./FormValidation.js";
+import { putCountries } from "../../api/countries";
+import { fetchCountries, resetCountries } from "../../redux/countries/actions";
+import formValidation from "./FormValidation";
 
 import "./styles.css";
 

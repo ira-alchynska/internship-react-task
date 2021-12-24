@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Button from "../Button/Button.jsx";
-import Images from "../../images.js";
+import Button from "../Button/Button";
+import Images from "../../images";
 import "./styles.css";
 
 const DropDown = ({ onClick, accessor, dropdownItems }) => {

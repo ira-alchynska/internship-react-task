@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import cx from "classnames";
 import toast from "react-hot-toast";
-import { putStates } from "../../api/states.js";
-import { fetchStates, resetStates } from "../../redux/states/actions.js";
-import StatesFormValidation from "./StatesFormValidation.js";
+import { putStates } from "../../api/states";
+import { fetchStates, resetStates } from "../../redux/states/actions";
+import StatesFormValidation from "./StatesFormValidation";
 
 import "./styles.css";
 

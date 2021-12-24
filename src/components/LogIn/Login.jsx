@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setIsAuthenticated } from "../../redux/auth/authActions.js";
+import { setIsAuthenticated } from "../../redux/auth/authActions";
 import "./styles.css";
 
 const Login = () => {

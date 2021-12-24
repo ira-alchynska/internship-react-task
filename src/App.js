@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Routes, Route, NavLink } from "react-router-dom";
 
-import CountriesTablePage from "./pages/CountriesTablePage.jsx";
-import StatesTablePage from "./pages/StatesTablePage.jsx";
-import CitiesTablePage from "./pages/CitiesTablePage.jsx";
+import CountriesTablePage from "./pages/CountriesTablePage";
+import StatesTablePage from "./pages/StatesTablePage";
+import CitiesTablePage from "./pages/CitiesTablePage";
 
-import LoginPage from "./pages/LoginPage.jsx";
-import AuthSelectors from "./redux/auth/authSelectors.js";
-import { setIsAuthenticated } from "./redux/auth/authActions.js";
-import { PrivateRoute } from "./components/routes/PrivateRoute.jsx";
+import LoginPage from "./pages/LoginPage";
+import AuthSelectors from "./redux/auth/authSelectors";
+import { setIsAuthenticated } from "./redux/auth/authActions";
+import { PrivateRoute } from "./components/routes/PrivateRoute";
 import "./App.css";
-import CountryCardList from "./components/CountryCard/CountryCardList.jsx";
+import CountryCardList from "./components/CountryCard/CountryCardList";
 
 const App = () => {
   const dispatch = useDispatch();
